@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOVA Hybrid School Operations Platform - Technizoit Proposal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #667eea;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #2a5298;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.5;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 0;
+        }
+
+        .section {
+            padding: 3rem 2rem;
+            border-bottom: 1px solid #e8f4f8;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1e3c72;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #667eea;
+            border-radius: 2px;
+        }
+
+        .cover-letter {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+            padding: 3rem;
+            margin: 2rem;
+            border-radius: 16px;
+            border-left: 6px solid #1e3c72;
+        }
+
+        .cover-letter h3 {
+            color: #1e3c72;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cover-letter p {
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .cover-letter .signature {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-top: 2rem;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .overview-card {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e1e8ed;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(30, 60, 114, 0.1);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #667eea;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e3c72;
+        }
+
+        .card-description {
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .success-criteria {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            border-left: 4px solid #0ea5e9;
+        }
+
+        .success-criteria h3 {
+            color: #0c4a6e;
+            margin-bottom: 1.5rem;
+        }
+
+        .criteria-list {
+            list-style: none;
+        }
+
+        .criteria-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #0c4a6e;
+            line-height: 1.6;
+        }
+
+        .criteria-list li::before {
+            content: '🎯';
+            position: absolute;
+            left: 0;
+            font-size: 1.1rem;
+        }
+
+        .scope-section {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+        }
+
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .scope-card {
+            background: white;
+            border: 2px solid #e8f4f8;
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .scope-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .scope-card h4 {
+            color: #1e3c72;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .scope-card h4::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: #667eea;
+            border-radius: 50%;
+            margin-right: 0.75rem;
+        }
+
+        .scope-list {
+            list-style: none;
+        }
+
+        .scope-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .scope-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        .architecture-section {
+            background: white;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tech-item {
+            background: white;
+            border: 1px solid #e8f4f8;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.1);
+        }
+
+        .tech-item h4 {
+            color: #1e3c72;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-item p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .phases-container {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .phase-card {
+            background: white;
+            border: 2px solid #e8f4f8;
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .phase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #667eea;
+        }
+
+        .phase-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-number {
+            width: 50px;
+            height: 50px;
+            background-color: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+
+        .phase-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+
+        .phase-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background: #f8fbff;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-right: 0.5rem;
+            min-width: 80px;
+        }
+
+        .detail-value {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .total-investment {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            border-radius: 16px;
+        }
+
+        .total-investment h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .total-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .total-timeline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .pricing-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid #e8f4f8;
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .pricing-card h3 {
+            color: #1e3c72;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-range {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e8f4f8;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.1);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .feature-content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e3c72;
+        }
+
+        .feature-content p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .conclusion-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .conclusion-section .section-title {
+            color: white;
+        }
+
+        .conclusion-section .section-title::before {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .next-steps {
+            list-style: none;
+            margin: 2rem 0;
+            counter-reset: step-counter;
+        }
+
+        .next-steps li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .next-steps li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .why-technizoit {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+        }
+
+        .out-of-scope {
+            background: #fef3c7;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #f59e0b;
+            margin-top: 2rem;
+        }
+
+        .out-of-scope h4 {
+            color: #f59e0b;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .out-of-scope ul {
+            color: #92400e;
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            body {
+                background: white !important;
+            }
+            
+            .container {
+                box-shadow: none !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+            }
+            
+            .header {
+                background-color: #2a5298 !important;
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .phase-card {
+                page-break-inside: avoid;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                border-radius: 8px;
+            }
+            
+            .header {
+                padding: 2rem 1rem;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 2rem 1rem;
+            }
+            
+            .phase-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .total-amount {
+                font-size: 2rem;
+            }
+
+            .cover-letter {
+                margin: 1rem;
+                padding: 2rem;
+            }
+
+            .pricing-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="./images/technizoit_logo_with_text.png" alt="Technizoit Logo" class="logo" />
+                </div>
+                <div class="tagline">Your business problems • Our technology solutions</div>
+                <h1 class="title">ZOVA Hybrid School Operations Platform</h1>
+                <p class="subtitle">Next-generation digital platform for comprehensive school operations and student lifecycle management</p>
+            </div>
+        </div>
+
+        <!-- Cover Letter -->
+        <div class="cover-letter">
+            <h3>Dear ZOVA Team,</h3>
+            <p>
+                Thank you for the opportunity to partner with you on your next-generation school operations platform. After reviewing the "Processes and Requirement Consolidated" document you shared, this proposal outlines Technizoit's understanding of your needs, our approach, scope, delivery plan, timelines, governance, and commercials to build the ZOVA Hybrid Platform—comprising apps for parents, teachers, and school admins, along with a comprehensive super admin panel.
+            </p>
+            <p>
+                With deep expertise in developing secure, scalable, multi-tenant SaaS platforms, particularly for regulated domains like education, we bring a pragmatic, milestone-driven execution model to ensure timely and efficient delivery.
+            </p>
+            <p>
+                We look forward to working closely with your team to co-create a platform that empowers schools and enhances the student experience.
+            </p>
+            <div class="signature">
+                Warmly,<br>
+                Technizoit Private Limited
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Objectives & Success Criteria -->
+            <div class="section">
+                <h2 class="section-title">Objectives & Success Criteria</h2>
+                
+                <div style="background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid #1e3c72;">
+                    <h3 style="color: #1e3c72; margin-bottom: 1rem; font-size: 1.3rem;">Primary Objective</h3>
+                    <p style="color: #64748b; line-height: 1.7; font-size: 1.1rem;">
+                        Build a robust, modular, and scalable platform that fully digitizes the student lifecycle and school operations, ensuring auditability, compliance, and a delightful user experience across web and mobile interfaces.
+                    </p>
+                </div>
+
+                <div class="success-criteria">
+                    <h3>Success Criteria</h3>
+                    <ul class="criteria-list">
+                        <li>End-to-end admissions live across pilot schools, improving seat fill rates and reducing manual intervention</li>
+                        <li>Enhanced fee collection with measurable improvements in DSO (Days Sales Outstanding) within 1–2 terms</li>
+                        <li>Achieve operational reliability: 99.9% monthly uptime and <200ms P95 latency for critical flows</li>
+                        <li>Strong adoption metrics among parents, teachers, and administrators, with reduced support requests through intuitive in-app guidance</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Scope Summary -->
+            <div class="section scope-section">
+                <h2 class="section-title">Scope Summary</h2>
+                
+                <div class="scope-grid">
+                    <div class="scope-card">
+                        <h4>Parents App (Web + Mobile)</h4>
+                        <ul class="scope-list">
+                            <li>Multi-school applications</li>
+                            <li>Offer tracking, fee payments, receipts, enrollment summaries</li>
+                            <li>Timetable, attendance, performance reports</li>
+                            <li>Messaging, PTM scheduling, service requests</li>
+                            <li>Alumni access</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="scope-card">
+                        <h4>Teacher App (Web + Mobile)</h4>
+                        <ul class="scope-list">
+                            <li>Class rosters, student profiles</li>
+                            <li>Attendance marking (daily and period-wise)</li>
+                            <li>Timetable management, gradebooks, bulk marking</li>
+                            <li>Announcements, issue reporting, professional development records</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="scope-card">
+                        <h4>School Admin Panel</h4>
+                        <ul class="scope-list">
+                            <li>Real-time dashboards for admissions, waitlists, and cutoffs</li>
+                            <li>Policy alerts, class allocation, quota management</li>
+                            <li>Audit trails, security logs, and background settings</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="scope-card">
+                        <h4>ZOVA Super Admin Panel</h4>
+                        <ul class="scope-list">
+                            <li>School onboarding, subscription management</li>
+                            <li>Cross-school analytics, finance tracking</li>
+                            <li>Compliance, security, pricing, and algorithm controls</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="out-of-scope">
+                    <h4>Out of Scope (Initial Release)</h4>
+                    <ul class="scope-list">
+                        <li>Transport GPS/IoT integrations, hostel inventory, cafeteria POS, library RFID</li>
+                        <li>Deep LMS integrations beyond basic single sign-on (SSO)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Solution Architecture -->
+            <div class="section architecture-section">
+                <h2 class="section-title">Solution Architecture</h2>
+                
+                <div style="background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%); padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+                    <h3 style="color: #1e3c72; margin-bottom: 1rem; font-size: 1.3rem;">Architecture Pattern</h3>
+                    <p style="color: #64748b; line-height: 1.7; font-size: 1.1rem;">
+                        Multi-tenant, service-oriented architecture evolving toward microservices, with event-driven workflows (Kafka/SNS/SQS). But will be finalized only after discovery and scoping. 
+                    </p>
+                </div>
+
+                <h3 style="color: #1e3c72; margin-bottom: 1.5rem; font-size: 1.5rem;">Technology Stack</h3>
+                
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <h4>Frontend</h4>
+                        <p>React/Next.js (Web), React Native (Mobile), Tailwind CSS</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Backend</h4>
+                        <p>NestJS (Node.js), PostgreSQL, Redis, OpenAPI/Swagger</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Infrastructure</h4>
+                        <p>AWS (EKS/Fargate), RDS Postgres, S3 + CloudFront, CloudWatch</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Security</h4>
+                        <p>OAuth2/OIDC, RBAC/ABAC, field-level encryption, audit logs</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Payments & Communication</h4>
+                        <p>Razorpay/PayU, SES, MSG91, FCM/APNS</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Observability</h4>
+                        <p>OpenTelemetry, distributed tracing, SIEM integration</p>
+                    </div>
+                </div>
+
+                <div style="background: #ecfdf5; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #22c55e; margin-top: 2rem;">
+                    <h4 style="color: #166534; margin-bottom: 1rem; font-size: 1.2rem;">Compliance</h4>
+                    <p style="color: #166534;">Data residency in India, DPDP compliance, encryption at rest and in transit, regular audits</p>
+                </div>
+            </div>
+
+            <!-- Phased Delivery Plan -->
+            <div class="section">
+                <h2 class="section-title">Phased Delivery Plan</h2>
+                
+                <div class="phases-container">
+                    <!-- Phase 0 -->
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-number">0</div>
+                            <h3 class="phase-title">Inception</h3>
+                        </div>
+                        <div class="phase-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">2 weeks</span>
+                            </div>
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: #1e3c72; font-size: 1.2rem;">Deliverables:</h4>
+                        <ul class="scope-list">
+                            <li>Discovery workshops, architecture finalization, pilot selection</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 1 -->
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-number">1</div>
+                            <h3 class="phase-title">Admissions & Parent Core</h3>
+                        </div>
+                        <div class="phase-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">6–8 weeks</span>
+                            </div>
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: #1e3c72; font-size: 1.2rem;">Deliverables:</h4>
+                        <ul class="scope-list">
+                            <li>Applications, status tracking, payments, confirmations</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-number">2</div>
+                            <h3 class="phase-title">Fees, Attendance & Timetable</h3>
+                        </div>
+                        <div class="phase-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">6–8 weeks</span>
+                            </div>
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: #1e3c72; font-size: 1.2rem;">Deliverables:</h4>
+                        <ul class="scope-list">
+                            <li>Recurring billing, receipts, attendance marking, timetable updates</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-number">3</div>
+                            <h3 class="phase-title">Academics, PTM & Service Desk</h3>
+                        </div>
+                        <div class="phase-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">6–7 weeks</span>
+                            </div>
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: #1e3c72; font-size: 1.2rem;">Deliverables:</h4>
+                        <ul class="scope-list">
+                            <li>Gradebooks, exam schedules, issue reporting, PTM management</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 4 -->
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-number">4</div>
+                            <h3 class="phase-title">Admin Cockpit & Quotas</h3>
+                        </div>
+                        <div class="phase-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">6–8 weeks</span>
+                            </div>
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: #1e3c72; font-size: 1.2rem;">Deliverables:</h4>
+                        <ul class="scope-list">
+                            <li>Waitlists, cutoffs, quota management, audit logs</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 5 -->
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-number">5</div>
+                            <h3 class="phase-title">Super Admin & Analytics</h3>
+                        </div>
+                        <div class="phase-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">6–7 weeks</span>
+                            </div>
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: #1e3c72; font-size: 1.2rem;">Deliverables:</h4>
+                        <ul class="scope-list">
+                            <li>School onboarding, cross-school analytics, billing controls</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 6 -->
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-number">6</div>
+                            <h3 class="phase-title">Pilot, Hardening & Launch</h3>
+                        </div>
+                        <div class="phase-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">3–4 weeks</span>
+                            </div>
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: #1e3c72; font-size: 1.2rem;">Deliverables:</h4>
+                        <ul class="scope-list">
+                            <li>UAT, security reviews, training, and support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Total Investment -->
+                <div class="total-investment">
+                    <h3>Total Project Duration</h3>
+                    <div class="total-amount">29–42 Weeks</div>
+                    <div class="total-timeline">Depending on scope and parallelization</div>
+                </div>
+            </div>
+
+            <!-- Deliverables & Acceptance Criteria -->
+            <div class="section">
+                <h2 class="section-title">Deliverables & Acceptance Criteria</h2>
+                
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <div class="card-icon">🎨</div>
+                        <div class="card-title">Design & UX</div>
+                        <div class="card-description">UX wireframes, clickable prototypes, and user-tested design systems</div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">⚙️</div>
+                        <div class="card-title">APIs & Documentation</div>
+                        <div class="card-description">Fully documented RESTful APIs with OpenAPI/Swagger specifications</div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">📱</div>
+                        <div class="card-title">Applications & Dashboards</div>
+                        <div class="card-description">Fully functional web and mobile apps with admin dashboards</div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">💳</div>
+                        <div class="card-title">Payment & Communication</div>
+                        <div class="card-description">Payment gateway integrations and multi-channel communication systems</div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">📊</div>
+                        <div class="card-title">Reporting & Analytics</div>
+                        <div class="card-description">Advanced reporting tools and cross-school analytics capabilities</div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">📚</div>
+                        <div class="card-title">Training & Documentation</div>
+                        <div class="card-description">Training materials, runbooks, and operational guides</div>
+                    </div>
+                </div>
+
+                <div class="success-criteria" style="margin-top: 3rem;">
+                    <h3>Key Acceptance Criteria</h3>
+                    <ul class="criteria-list">
+                        <li>Seamless application submission and tracking</li>
+                        <li>Fee payments with proper receipt generation</li>
+                        <li>Accurate attendance marking and alerts</li>
+                        <li>Gradebooks, exam schedules, and PDF reports</li>
+                        <li>Messaging, notifications, and PTM scheduling</li>
+                        <li>Admin dashboards with audit logs and quota management</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Quality, Security & DevOps -->
+            <div class="section">
+                <h2 class="section-title">Quality, Security & DevOps</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🧪</div>
+                        <div class="feature-content">
+                            <h4>Automated Testing</h4>
+                            <p>Comprehensive test coverage including unit, integration, load testing, and accessibility audits</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔒</div>
+                        <div class="feature-content">
+                            <h4>Security Framework</h4>
+                            <p>Security scanning, encryption protocols, session management, and compliance monitoring</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🚀</div>
+                        <div class="feature-content">
+                            <h4>CI/CD Pipeline</h4>
+                            <p>Automated deployment pipelines with feature flags and blue-green deployment strategies</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📈</div>
+                        <div class="feature-content">
+                            <h4>Monitoring & Observability</h4>
+                            <p>Real-time application monitoring, distributed tracing, and performance analytics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team & Governance -->
+            <div class="section">
+                <h2 class="section-title">Team & Governance</h2>
+                
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <div class="card-icon">👥</div>
+                        <div class="card-title">Core Team Structure</div>
+                        <div class="card-description">
+                            <ul class="scope-list" style="margin-top: 1rem;">
+                                <li>Delivery Manager & Product Manager</li>
+                                <li>UX Lead & Frontend Engineers</li>
+                                <li>Backend Engineers & DevOps Specialists</li>
+                                <li>QA Engineers & Security Experts</li>
+                                <li>Data/BI Specialists</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">📋</div>
+                        <div class="card-title">Governance Model</div>
+                        <div class="card-description">
+                            <ul class="scope-list" style="margin-top: 1rem;">
+                                <li>Fortnightly sprint reviews</li>
+                                <li>Monthly steering committee meetings</li>
+                                <li>Shared project dashboards</li>
+                                <li>Risk escalation protocols</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commercials -->
+            <div class="section">
+                <h2 class="section-title">Commercials (Indicative)</h2>
+                
+                <div class="pricing-options">
+                    <div class="pricing-card">
+                        <h3>Fixed-Fee Option</h3>
+                        <div class="price-range">₹1.18 – ₹1.60 Cr</div>
+                        <p style="color: #64748b; margin-bottom: 1.5rem;">Total project cost distributed across phases with milestone-based payments</p>
+                        <ul class="scope-list">
+                            <li>Predictable budget with fixed scope</li>
+                            <li>30/30/30/10 milestone payment structure</li>
+                            <li>Risk sharing with Technizoit</li>
+                            <li>Change requests handled separately</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <h3>Time & Material Option</h3>
+                        <div class="price-range">₹4,500 – ₹6,500</div>
+                        <p style="color: #64748b; margin-bottom: 0.5rem;">Per hour rates</p>
+                        <p style="color: #64748b; margin-bottom: 1.5rem; font-size: 0.9rem;">Monthly burn: ₹24 – ₹32 Lakhs</p>
+                        <ul class="scope-list">
+                            <li>Flexible scope adjustments</li>
+                            <li>Pay for actual effort invested</li>
+                            <li>Transparent time tracking</li>
+                            <li>Easier scope modifications</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); padding: 2rem; border-radius: 12px; margin-top: 2rem; border-left: 4px solid #22c55e;">
+                    <h4 style="color: #166534; margin-bottom: 1rem; font-size: 1.2rem;">Payment Terms</h4>
+                    <p style="color: #166534;">30/30/30/10 milestone-based structure with payments due upon completion and acceptance of each phase deliverable. Net 15 days payment terms.</p>
+                </div>
+            </div>
+
+            <!-- Assumptions & Dependencies -->
+            <div class="section">
+                <h2 class="section-title">Assumptions & Dependencies</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🏫</div>
+                        <div class="feature-content">
+                            <h4>Pilot Schools</h4>
+                            <p>Initial pilot with 2–3 schools for testing and validation</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🇮🇳</div>
+                        <div class="feature-content">
+                            <h4>Education Standards</h4>
+                            <p>Indian K–12 fee and exam structures as baseline requirements</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">💳</div>
+                        <div class="feature-content">
+                            <h4>Third-party Services</h4>
+                            <p>Client provisioning of payment gateway and SMS service accounts</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎨</div>
+                        <div class="feature-content">
+                            <h4>Brand Assets</h4>
+                            <p>Access to branding guidelines, assets, and design templates</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risks & Mitigations -->
+            <div class="section why-technizoit">
+                <h2 class="section-title">Risks & Mitigations</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">⚖️</div>
+                        <div class="feature-content">
+                            <h4>Policy Changes</h4>
+                            <p>Configuration-driven approach to handle regulatory and policy changes dynamically</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📚</div>
+                        <div class="feature-content">
+                            <h4>User Adoption</h4>
+                            <p>Comprehensive training programs and intuitive user guides to ensure smooth adoption</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-content">
+                            <h4>Data Quality</h4>
+                            <p>Robust validation systems and detailed data quality reports</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⚡</div>
+                        <div class="feature-content">
+                            <h4>Scale Management</h4>
+                            <p>Queue-based systems and auto-scaling infrastructure to handle traffic spikes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Handover & Support -->
+            <div class="section">
+                <h2 class="section-title">Handover, Training & Support</h2>
+                
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <div class="card-icon">🎓</div>
+                        <div class="card-title">Training Programs</div>
+                        <div class="card-description">Train-the-trainer sessions and micro-learning content for all user roles</div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">🛡️</div>
+                        <div class="card-title">SLA-backed Support</div>
+                        <div class="card-description">Business hours and 24×7 support models with defined response times</div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">🚑</div>
+                        <div class="card-title">Hypercare Support</div>
+                        <div class="card-description">Dedicated post-launch support during critical initial weeks</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="section conclusion-section">
+                <h2 class="section-title">Next Steps</h2>
+                <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; opacity: 0.95; text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                    We're excited about the opportunity to co-build ZOVA into a category-defining platform for schools and look forward to partnering with you.
+                </p>
+                
+                <ul class="next-steps">
+                    <li>Phase-0 discovery workshop</li>
+                    <li>Backlog and milestone planning</li>
+                    <li>Kickoff and environment provisioning</li>
+                </ul>
+
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Ready to Transform School Operations?</h3>
+                    <p style="margin-bottom: 2rem; opacity: 0.9;">Let's schedule a discovery workshop to align on requirements and finalize the execution roadmap.</p>
+                    
+                    <div class="contact-links">
+                        <a href="mailto:hello@technizoit.com" class="contact-link">
+                            Schedule Discovery Workshop
+                        </a>
+                        <a href="https://www.technizoit.com/" class="contact-link" target="_blank">
+                            Visit Website
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
