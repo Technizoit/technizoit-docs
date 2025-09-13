@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lord's Pathology Healthcare App - Technizoit Proposal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #667eea;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #2a5298;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.5;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 0;
+        }
+
+        .section {
+            padding: 3rem 2rem;
+            border-bottom: 1px solid #e8f4f8;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1e3c72;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #667eea;
+            border-radius: 2px;
+        }
+
+        .cover-letter {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+            padding: 3rem;
+            margin: 2rem;
+            border-radius: 16px;
+            border-left: 6px solid #1e3c72;
+        }
+
+        .cover-letter h3 {
+            color: #1e3c72;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cover-letter p {
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .cover-letter .signature {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-top: 2rem;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .overview-card {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e1e8ed;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(30, 60, 114, 0.1);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #667eea;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e3c72;
+        }
+
+        .card-description {
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .objectives-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .objectives-list li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #64748b;
+            line-height: 1.7;
+            border-bottom: 1px solid #e8f4f8;
+        }
+
+        .objectives-list li:last-child {
+            border-bottom: none;
+        }
+
+        .objectives-list li::before {
+            content: '🎯';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .objectives-list li strong {
+            color: #1e3c72;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .phases-container {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .phase-card {
+            background: white;
+            border: 2px solid #e8f4f8;
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .phase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #667eea;
+        }
+
+        .phase-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-number {
+            width: 50px;
+            height: 50px;
+            background-color: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+
+        .phase-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+
+        .phase-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background: #f8fbff;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-right: 0.5rem;
+            min-width: 80px;
+        }
+
+        .detail-value {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .scope-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .scope-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .scope-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tech-item {
+            background: white;
+            border: 1px solid #e8f4f8;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.1);
+        }
+
+        .tech-item h4 {
+            color: #1e3c72;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-item p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .total-investment {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            border-radius: 16px;
+        }
+
+        .total-investment h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .total-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .total-timeline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .payment-table {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .payment-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .payment-table thead {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+        }
+
+        .payment-table th, .payment-table td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid #e8f4f8;
+        }
+
+        .payment-table th {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .payment-table tr:hover {
+            background: #f8fbff;
+        }
+
+        .payment-table .amount {
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .why-technizoit {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e8f4f8;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.1);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .feature-content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e3c72;
+        }
+
+        .feature-content p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .conclusion-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .conclusion-section .section-title {
+            color: white;
+        }
+
+        .conclusion-section .section-title::before {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .next-steps {
+            list-style: none;
+            margin: 2rem 0;
+            counter-reset: step-counter;
+        }
+
+        .next-steps li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .next-steps li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .support-section {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+        }
+
+        .pricing-highlight {
+            display: inline-block;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            body {
+                background: white !important;
+            }
+            
+            .container {
+                box-shadow: none !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+            }
+            
+            .header {
+                background-color: #2a5298 !important;
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .phase-card {
+                page-break-inside: avoid;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                border-radius: 8px;
+            }
+            
+            .header {
+                padding: 2rem 1rem;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 2rem 1rem;
+            }
+            
+            .phase-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .total-amount {
+                font-size: 2rem;
+            }
+
+            .cover-letter {
+                margin: 1rem;
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="./images/technizoit_logo_with_text.png" alt="Technizoit Logo" class="logo" />
+                </div>
+                <div class="tagline">Your business problems • Our technology solutions</div>
+                <h1 class="title">Lord's Pathology Healthcare App</h1>
+                <p class="subtitle">Comprehensive digital health platform for lab tests, consultations, and healthcare management</p>
+            </div>
+        </div>
+
+        <!-- Cover Letter -->
+        <div class="cover-letter">
+            <h3>Dear Lord's Pathology Team,</h3>
+            <p>
+                Thank you for giving us the opportunity to collaborate with you on transforming healthcare access through a patient-friendly digital platform. After reviewing the scope of work and your vision to offer lab tests, doctor consultations, and healthcare management through a modern app, this proposal outlines Technizoit's understanding, approach, phased delivery, timeline, and pricing to help bring this vision to life.
+            </p>
+            <p>
+                With deep experience in building secure, scalable, and intuitive health-focused applications, we bring a structured, milestone-driven approach to ensure timely and high-quality delivery. We are excited to partner with you and support your mission to make healthcare services more accessible, reliable, and user-centric.
+            </p>
+            <p>
+                We look forward to working closely with your team to create an app that empowers patients and enhances healthcare outcomes.
+            </p>
+            <div class="signature">
+                Warmly,<br>
+                Technizoit Private Limited
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Project Definition -->
+            <div class="section">
+                <h2 class="section-title">Project Definition & Objectives</h2>
+                
+                <div style="background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid #1e3c72;">
+                    <h3 style="color: #1e3c72; margin-bottom: 1rem; font-size: 1.3rem;">Project Definition</h3>
+                    <p style="color: #64748b; line-height: 1.7; font-size: 1.1rem;">
+                        Lord's Pathology aims to build a comprehensive health app similar to Tata 1mg and Apollo, where users can seamlessly book lab tests, schedule doctor consultations, view reports, and make payments — all through their smartphones.
+                    </p>
+                </div>
+
+                <h3 style="color: #1e3c72; margin-bottom: 1.5rem; font-size: 1.5rem;">Primary Objectives</h3>
+                
+                <ul class="objectives-list">
+                    <li>
+                        <strong>Enable users to easily book diagnostic tests and doctor appointments</strong>
+                        For example, patients should be able to select a test, choose a slot, and confirm home sample collection in minutes.
+                    </li>
+                    <li>
+                        <strong>Provide secure and accessible medical reports and health records</strong>
+                        Users should receive notifications for available reports and be able to view or download them instantly.
+                    </li>
+                    <li>
+                        <strong>Offer smooth payment experiences with multiple options</strong>
+                        Integration with UPI, cards, and wallets to facilitate fast and secure payments.
+                    </li>
+                    <li>
+                        <strong>Empower healthcare providers with operational tools</strong>
+                        A real-time dashboard for managing appointments, patient history, and reports to ensure smooth service delivery.
+                    </li>
+                    <li>
+                        <strong>Lay the foundation for future expansion</strong>
+                        The app will be built to scale with additional features like loyalty programs, health tips, or telemedicine consultations.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Scope Summary -->
+            <div class="section">
+                <h2 class="section-title">Scope Summary</h2>
+                
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <div class="card-icon">📱</div>
+                        <div class="card-title">Patient App (Mobile – Android & iOS)</div>
+                        <div class="card-description">
+                            <ul class="scope-list">
+                                <li>Lab test booking and home sample collection</li>
+                                <li>Doctor consultation scheduling (chat, audio, video)</li>
+                                <li>Report access, history, and notifications</li>
+                                <li>Secure payments and transaction receipts</li>
+                                <li>User profile management and health insights</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">💻</div>
+                        <div class="card-title">Admin Panel (Web)</div>
+                        <div class="card-description">
+                            <ul class="scope-list">
+                                <li>Manage bookings, test status, and patient queries</li>
+                                <li>View analytics and reports</li>
+                                <li>Monitor payments and refunds</li>
+                                <li>Access logs for audit and compliance purposes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: #fff3cd; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #f59e0b; margin-top: 2rem;">
+                    <h4 style="color: #f59e0b; margin-bottom: 1rem; font-size: 1.2rem;">Out of Scope (Initial Release)</h4>
+                    <ul class="scope-list" style="color: #92400e;">
+                        <li>Deep integrations with external hospital systems beyond API-based links</li>
+                        <li>Advanced telemedicine features like AI symptom checkers (can be considered later)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Solution & Technology Stack -->
+            <div class="section">
+                <h2 class="section-title">Solution & Technology Stack</h2>
+                
+                <div style="background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%); padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+                    <h3 style="color: #1e3c72; margin-bottom: 1rem; font-size: 1.3rem;">Architecture Pattern</h3>
+                    <p style="color: #64748b; line-height: 1.7; font-size: 1.1rem;">
+                        A modular, service-oriented architecture designed to scale and adapt, with secure and event-driven workflows.
+                    </p>
+                </div>
+
+                <h3 style="color: #1e3c72; margin-bottom: 1.5rem; font-size: 1.5rem;">Technology Stack</h3>
+                
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <h4>Frontend</h4>
+                        <p>React/Next.js (Web), React Native (Mobile), Tailwind CSS</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Backend</h4>
+                        <p>Node.js with PostgreSQL, Redis for caching</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Infrastructure</h4>
+                        <p>AWS (RDS, S3, CloudFront, CloudWatch)</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Security</h4>
+                        <p>OAuth2, field-level encryption, audit logs, and HIPAA-compliant data handling</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Payments & Notifications</h4>
+                        <p>Razorpay, PayU, UPI integration, email and SMS alerts</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Observability</h4>
+                        <p>Monitoring tools for performance and error tracking</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phased Delivery Plan -->
+            <div class="section">
+                <h2 class="section-title">Phased Delivery Plan</h2>
+                
+                <div class="phases-container">
+                    <!-- Phase 0 -->
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-number">0</div>
+                            <h3 class="phase-title">Inception</h3>
+                        </div>
+                        <div class="phase-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">2 weeks</span>
+                            </div>
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: #1e3c72; font-size: 1.2rem;">Deliverables:</h4>
+                        <ul class="scope-list">
+                            <li>Workshops to finalize features, architecture planning, and design flows</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 1 -->
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-number">1</div>
+                            <h3 class="phase-title">Booking & Profile Management</h3>
+                        </div>
+                        <div class="phase-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">1 month</span>
+                            </div>
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: #1e3c72; font-size: 1.2rem;">Deliverables:</h4>
+                        <ul class="scope-list">
+                            <li>Lab test booking, appointment scheduling, user registration, and basic payment integration</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-number">2</div>
+                            <h3 class="phase-title">Reports & Consultation</h3>
+                        </div>
+                        <div class="phase-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">1 month</span>
+                            </div>
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: #1e3c72; font-size: 1.2rem;">Deliverables:</h4>
+                        <ul class="scope-list">
+                            <li>Report uploads, doctor consultations, notifications, payment confirmations</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-number">3</div>
+                            <h3 class="phase-title">Analytics & Admin Panel</h3>
+                        </div>
+                        <div class="phase-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">1 month</span>
+                            </div>
+                        </div>
+                        <h4 style="margin-bottom: 1rem; color: #1e3c72; font-size: 1.2rem;">Deliverables:</h4>
+                        <ul class="scope-list">
+                            <li>Dashboard setup, real-time reports, billing management, feedback collection, and final testing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Total Investment -->
+                <div class="total-investment">
+                    <h3>Total Project Duration</h3>
+                    <div class="total-amount">3.5 Months</div>
+                    <div class="total-timeline">Milestone-Based Delivery</div>
+                </div>
+            </div>
+
+            <!-- Payment Structure -->
+            <div class="section">
+                <h2 class="section-title">Payment Structure</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; color: #64748b;">
+                    Our milestone-based payment structure ensures transparent billing aligned with project deliverables. 
+                    All pass-through costs (payment gateways, SMS services) will be billed at actuals.
+                </p>
+                
+                <div class="payment-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Phase</th>
+                                <th style="text-align: left;">Milestone</th>
+                                <th style="text-align: center;">Amount</th>
+                                <th style="text-align: center;">Payment Due</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: 600; color: #1e3c72;">Phase 0</td>
+                                <td>Project inception after completion of Phase 0</td>
+                                <td class="amount" style="text-align: center;">10% (₹1,80,000)</td>
+                                <td style="text-align: center;">Upon completion</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: #1e3c72;">Phase 1</td>
+                                <td>Booking and profile features completion</td>
+                                <td class="amount" style="text-align: center;">30% (₹5,40,000)</td>
+                                <td style="text-align: center;">Upon completion</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: #1e3c72;">Phase 2</td>
+                                <td>Reports and consultation functionalities delivery</td>
+                                <td class="amount" style="text-align: center;">30% (₹5,40,000)</td>
+                                <td style="text-align: center;">Upon completion</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: #1e3c72;">Phase 3</td>
+                                <td>Successful deployment and admin setup</td>
+                                <td class="amount" style="text-align: center;">30% (₹5,40,000)</td>
+                                <td style="text-align: center;">Upon completion</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem; padding: 2rem; background: linear-gradient(135deg, #22c55e, #16a34a); color: white; border-radius: 16px;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Total Project Cost</h3>
+                    <div style="font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem;">₹18 Lakhs</div>
+                    <div style="font-size: 1.2rem; opacity: 0.9;">(Exclusive of GST)</div>
+                </div>
+
+                <div class="overview-grid" style="margin-top: 3rem;">
+                    <div class="overview-card">
+                        <div class="card-icon">📋</div>
+                        <div class="card-title">Payment Terms</div>
+                        <div class="card-description">
+                            Net 15 days from invoice date. Each payment is due upon successful completion and client acceptance of phase deliverables.
+                        </div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-icon">✅</div>
+                        <div class="card-title">Acceptance Criteria</div>
+                        <div class="card-description">
+                            Each milestone includes formal UAT and sign-off procedures to ensure deliverables meet agreed specifications.
+                        </div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-icon">💳</div>
+                        <div class="card-title">Payment Methods</div>
+                        <div class="card-description">
+                            Bank transfer, corporate cheque, or digital payment platforms. GST will be added as applicable per Indian tax regulations.
+                        </div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-icon">🔄</div>
+                        <div class="card-title">Change Requests</div>
+                        <div class="card-description">
+                            Scope changes will be evaluated and priced separately with mutual agreement before implementation.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Technizoit -->
+            <div class="section why-technizoit">
+                <h2 class="section-title">Why Technizoit</h2>
+                <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; color: #64748b; text-align: center; max-width: 900px; margin: 0 auto 2rem;">
+                    We bring a rare combination of technical expertise and healthcare domain understanding. Our past projects across India, the US, and Singapore reflect our commitment to building scalable and secure apps that users trust.
+                </p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🚀</div>
+                        <div class="feature-content">
+                            <h4>Fast & Scalable Solutions</h4>
+                            <p>Delivering fast, scalable solutions that meet healthcare data compliance standards</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎨</div>
+                        <div class="feature-content">
+                            <h4>Intuitive User Interfaces</h4>
+                            <p>Building intuitive, user-friendly interfaces that simplify patient interactions</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🤝</div>
+                        <div class="feature-content">
+                            <h4>Long-term Partnerships</h4>
+                            <p>Supporting long-term partnerships, helping clients expand features post-launch</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔒</div>
+                        <div class="feature-content">
+                            <h4>Data Security & Privacy</h4>
+                            <p>Ensuring robust data security and privacy protocols</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: white; border-radius: 16px; border: 2px solid #1e3c72;">
+                    <h3 style="color: #1e3c72; margin-bottom: 1rem; font-size: 1.5rem;">Our Portfolio</h3>
+                    <p style="color: #64748b; margin-bottom: 1.5rem; font-size: 1.1rem;">
+                        Our portfolio showcases projects that have transformed healthcare, e-commerce, and education, 
+                        helping businesses streamline operations and enhance user experiences.
+                    </p>
+                    <div class="contact-links">
+                        <a href="https://technizoit.github.io/technizoit-docs/portfolio.html" style="background: #1e3c72; color: white; text-decoration: none; padding: 0.8rem 1.5rem; border-radius: 25px; font-weight: 600; margin: 0.5rem;" target="_blank">
+                            View Portfolio
+                        </a>
+                        <a href="https://www.technizoit.com/" style="background: white; color: #1e3c72; border: 2px solid #1e3c72; text-decoration: none; padding: 0.8rem 1.5rem; border-radius: 25px; font-weight: 600; margin: 0.5rem;" target="_blank">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Steps & Conclusion -->
+            <div class="section conclusion-section">
+                <h2 class="section-title">Next Steps</h2>
+                <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; opacity: 0.95; text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                    We are excited about the possibility of working together and helping Lord's Pathology make healthcare more accessible and impactful.
+                </p>
+                
+                <ul class="next-steps">
+                    <li>Conduct a discovery workshop to finalize requirements</li>
+                    <li>Approve the milestone plan and payment schedule</li>
+                    <li>Begin development with environment setup and designs</li>
+                </ul>
+
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Ready to Transform Healthcare Access?</h3>
+                    <p style="margin-bottom: 2rem; opacity: 0.9;">Let's schedule a discovery session to discuss your vision in detail and finalize the project roadmap.</p>
+                    
+                    <div class="contact-links">
+                        <a href="mailto:hello@technizoit.com" class="contact-link">
+                            Schedule Discovery Call
+                        </a>
+                        <a href="https://www.technizoit.com/" class="contact-link" target="_blank">
+                            Visit Website
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
