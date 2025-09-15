@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technospy Attendance Management Platform - Technizoit Proposal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #667eea;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #2a5298;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.5;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 0;
+        }
+
+        .section {
+            padding: 3rem 2rem;
+            border-bottom: 1px solid #e8f4f8;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1e3c72;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #667eea;
+            border-radius: 2px;
+        }
+
+        .cover-letter {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+            padding: 3rem;
+            margin: 2rem;
+            border-radius: 16px;
+            border-left: 6px solid #1e3c72;
+        }
+
+        .cover-letter h3 {
+            color: #1e3c72;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cover-letter p {
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .cover-letter .signature {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-top: 2rem;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .overview-card {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e1e8ed;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(30, 60, 114, 0.1);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #667eea;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e3c72;
+        }
+
+        .card-description {
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .objectives-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .objectives-list li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #64748b;
+            line-height: 1.7;
+            border-bottom: 1px solid #e8f4f8;
+        }
+
+        .objectives-list li:last-child {
+            border-bottom: none;
+        }
+
+        .objectives-list li::before {
+            content: '🎯';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .use-cases {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            border-left: 4px solid #0ea5e9;
+        }
+
+        .use-cases h3 {
+            color: #0c4a6e;
+            margin-bottom: 1.5rem;
+        }
+
+        .use-cases ul {
+            list-style: none;
+        }
+
+        .use-cases li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #0c4a6e;
+            line-height: 1.6;
+        }
+
+        .use-cases li::before {
+            content: '💼';
+            position: absolute;
+            left: 0;
+            font-size: 1.1rem;
+        }
+
+        .scope-section {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+        }
+
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .scope-card {
+            background: white;
+            border: 2px solid #e8f4f8;
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .scope-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .scope-card h4 {
+            color: #1e3c72;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .scope-card h4::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: #667eea;
+            border-radius: 50%;
+            margin-right: 0.75rem;
+        }
+
+        .scope-list {
+            list-style: none;
+        }
+
+        .scope-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .scope-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tech-item {
+            background: white;
+            border: 1px solid #e8f4f8;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.1);
+        }
+
+        .tech-item h4 {
+            color: #1e3c72;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-item p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .phases-container {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .phase-card {
+            background: white;
+            border: 2px solid #e8f4f8;
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .phase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #667eea;
+        }
+
+        .phase-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-number {
+            width: 50px;
+            height: 50px;
+            background-color: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+
+        .phase-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+
+        .phase-description {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .why-technizoit {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e8f4f8;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.1);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .feature-content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e3c72;
+        }
+
+        .feature-content p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .conclusion-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .conclusion-section .section-title {
+            color: white;
+        }
+
+        .conclusion-section .section-title::before {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .next-steps {
+            list-style: none;
+            margin: 2rem 0;
+            counter-reset: step-counter;
+        }
+
+        .next-steps li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .next-steps li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .out-of-scope {
+            background: #fef3c7;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #f59e0b;
+            margin-top: 2rem;
+        }
+
+        .out-of-scope h4 {
+            color: #f59e0b;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .out-of-scope ul {
+            color: #92400e;
+        }
+
+        .tbd-section {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            border-left: 4px solid #8b5cf6;
+            text-align: center;
+        }
+
+        .tbd-section h3 {
+            color: #5b21b6;
+            margin-bottom: 1rem;
+        }
+
+        .tbd-section p {
+            color: #6b21a8;
+            font-size: 1.1rem;
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            body {
+                background: white !important;
+            }
+            
+            .container {
+                box-shadow: none !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+            }
+            
+            .header {
+                background-color: #2a5298 !important;
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .phase-card {
+                page-break-inside: avoid;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                border-radius: 8px;
+            }
+            
+            .header {
+                padding: 2rem 1rem;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .cover-letter {
+                margin: 1rem;
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="./images/technizoit_logo_with_text.png" alt="Technizoit Logo" class="logo" />
+                </div>
+                <div class="tagline">Your business problems • Our technology solutions</div>
+                <h1 class="title">Technospy Attendance Management Platform</h1>
+                <p class="subtitle">Next-generation attendance tracking solution with mobile, biometric, and geo-location capabilities</p>
+            </div>
+        </div>
+
+        <!-- Cover Letter -->
+        <div class="cover-letter">
+            <h3>Dear Technospy Team,</h3>
+            <p>
+                Thank you for giving us the opportunity to collaborate on building a next-generation attendance management platform. After reviewing the requirements you shared and understanding your vision to provide seamless attendance tracking solutions through mobile and biometric devices, we are excited to partner with you in transforming how organizations manage their workforce.
+            </p>
+            <p>
+                At Technizoit, we bring extensive experience in creating secure, scalable, and user-friendly applications for businesses across India, Singapore, USA and beyond. Our pragmatic, milestone-driven approach ensures timely delivery while focusing on performance, usability, and compliance.
+            </p>
+            <p>
+                We look forward to working closely with your team to co-create an attendance solution that improves efficiency, builds trust, and scales with your organization's growth.
+            </p>
+            <div class="signature">
+                Warmly,<br>
+                Technizoit Private Limited
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Project Definition & Objectives -->
+            <div class="section">
+                <h2 class="section-title">Project Definition & Objectives</h2>
+                
+                <div style="background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid #1e3c72;">
+                    <h3 style="color: #1e3c72; margin-bottom: 1rem; font-size: 1.3rem;">Project Definition</h3>
+                    <p style="color: #64748b; line-height: 1.7; font-size: 1.1rem;">
+                        Technospy aims to develop a comprehensive attendance platform that enables employees to mark attendance through mobile apps, biometric devices, and geo-location, while offering administrators real-time tracking, reporting, and management tools to streamline operations.
+                    </p>
+                </div>
+
+                <h3 style="color: #1e3c72; margin-bottom: 1.5rem; font-size: 1.5rem;">Primary Objectives</h3>
+                
+                <ul class="objectives-list">
+                    <li>Enable employees to mark attendance via GPS, facial recognition, QR codes, or fingerprint devices with accuracy and convenience</li>
+                    <li>Provide real-time access to attendance logs and reports for administrators and employees alike</li>
+                    <li>Automate leave management, scheduling, and alerts to enhance productivity</li>
+                    <li>Securely store sensitive attendance data with compliance to privacy standards</li>
+                    <li>Create a scalable platform that can support future enhancements like payroll integration, multi-location support, and AI-driven insights</li>
+                </ul>
+
+                <div class="use-cases">
+                    <h3>Example Use Cases</h3>
+                    <ul>
+                        <li>A field technician marking attendance through GPS from remote sites</li>
+                        <li>An HR manager tracking employee attendance across multiple departments and locations</li>
+                        <li>Employees accessing their attendance history and submitting leave requests through the mobile app</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Scope Summary -->
+            <div class="section scope-section">
+                <h2 class="section-title">Scope Summary</h2>
+                
+                <div class="scope-grid">
+                    <div class="scope-card">
+                        <h4>Mobile App (Android & iOS)</h4>
+                        <ul class="scope-list">
+                            <li>Attendance marking via biometric, face recognition, GPS, and QR codes</li>
+                            <li>Notifications for check-ins, approvals, and attendance anomalies</li>
+                            <li>Leave requests, approvals, and balance tracking</li>
+                            <li>Access to attendance history and reports</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="scope-card">
+                        <h4>Web-based Admin Panel</h4>
+                        <ul class="scope-list">
+                            <li>Employee management with role-based access controls</li>
+                            <li>Shift scheduling, leave management, and policy settings</li>
+                            <li>Real-time dashboards and attendance analytics</li>
+                            <li>Reporting tools with export options for payroll and audits</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="scope-card">
+                        <h4>Security & Compliance</h4>
+                        <ul class="scope-list">
+                            <li>Encrypted data storage and secure communication channels</li>
+                            <li>Compliance with applicable data protection laws</li>
+                            <li>Audit trails and activity logs for accountability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="out-of-scope">
+                    <h4>Out of Scope (Initial Release)</h4>
+                    <ul class="scope-list">
+                        <li>Deep integrations with external HR or ERP systems beyond API links</li>
+                        <li>Advanced analytics using AI (can be considered in later phases)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Solution Architecture -->
+            <div class="section">
+                <h2 class="section-title">Solution Architecture</h2>
+                
+                <div style="background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%); padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+                    <h3 style="color: #1e3c72; margin-bottom: 1rem; font-size: 1.3rem;">Architecture Pattern</h3>
+                    <p style="color: #64748b; line-height: 1.7; font-size: 1.1rem;">
+                        A cloud-native, modular design with service-oriented workflows that ensure scalability, reliability, and ease of maintenance.
+                    </p>
+                </div>
+
+                <h3 style="color: #1e3c72; margin-bottom: 1.5rem; font-size: 1.5rem;">Technology Stack</h3>
+                
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <h4>Mobile</h4>
+                        <p>React Native (for both Android and iOS)</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Web Admin</h4>
+                        <p>React / Next.js</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Styling</h4>
+                        <p>Tailwind CSS for fast and consistent UI development</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Backend</h4>
+                        <p>Node.js with PostgreSQL, Redis for caching</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Cloud Infrastructure</h4>
+                        <p>AWS services like RDS, S3, CloudFront, and CloudWatch</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Security</h4>
+                        <p>OAuth2, encryption, and secure audit logging</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Integrations</h4>
+                        <p>Payment gateways, SMS/email alerts, and biometric systems</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phased Delivery Plan -->
+            <div class="section">
+                <h2 class="section-title">Phased Delivery Plan</h2>
+                
+                <div class="phases-container">
+                    <!-- Phase 0 -->
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-number">0</div>
+                            <h3 class="phase-title">Inception</h3>
+                        </div>
+                        <p class="phase-description">
+                            Workshops to finalize features, architecture, user flows, and technical requirements.
+                        </p>
+                    </div>
+
+                    <!-- Phase 1 -->
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-number">1</div>
+                            <h3 class="phase-title">Core Attendance Features</h3>
+                        </div>
+                        <p class="phase-description">
+                            Employee registration, check-in/check-out, and notifications.
+                        </p>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-number">2</div>
+                            <h3 class="phase-title">Scheduling & Leave Management</h3>
+                        </div>
+                        <p class="phase-description">
+                            Shift allocation, leave policies, and alerts.
+                        </p>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="phase-card">
+                        <div class="phase-header">
+                            <div class="phase-number">3</div>
+                            <h3 class="phase-title">Reporting & Admin Tools</h3>
+                        </div>
+                        <p class="phase-description">
+                            Analytics dashboards, exportable reports, and audit logs.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="tbd-section">
+                    <h3>Project Timeline & Further Phases</h3>
+                    <p>Timeline and additional phases (like advanced analytics, payroll systems, etc.) to be discussed and finalized based on scope and requirements.</p>
+                </div>
+            </div>
+
+            <!-- Pricing Structure -->
+            <div class="section">
+                <h2 class="section-title">Pricing Structure</h2>
+                
+                <div class="tbd-section">
+                    <h3>Total Project Cost & Payment Terms</h3>
+                    <p>To be discussed and finalized based on project features, scale, integrations, and requirements alignment.</p>
+                </div>
+
+                <div class="overview-grid" style="margin-top: 3rem;">
+                    <div class="overview-card">
+                        <div class="card-icon">📋</div>
+                        <div class="card-title">Transparent Pricing</div>
+                        <div class="card-description">
+                            Milestone-based payment structure aligned with deliverables and project phases
+                        </div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-icon">⚖️</div>
+                        <div class="card-title">Flexible Terms</div>
+                        <div class="card-description">
+                            Payment terms and structure to be customized based on project scope and client preferences
+                        </div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-icon">🎯</div>
+                        <div class="card-title">Value-Based Approach</div>
+                        <div class="card-description">
+                            Pricing aligned with delivered value and measurable business outcomes
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Technizoit -->
+            <div class="section why-technizoit">
+                <h2 class="section-title">Why Technizoit</h2>
+                <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; color: #64748b; text-align: center; max-width: 900px; margin: 0 auto 2rem;">
+                    We believe that technology should simplify complexity and empower teams to achieve their best work. At Technizoit, we combine technical expertise with domain understanding to build solutions that are intuitive, secure, and scalable.
+                </p>
+                
+                <div class="features-grid">
