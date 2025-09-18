@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technospy Attendance Management Platform - Technizoit Proposal</title>
+    <title>Technospy Attendance SaaS Platform - Technizoit Proposal</title>
     <style>
         * {
             margin: 0;
@@ -214,38 +214,6 @@
             font-size: 1.2rem;
         }
 
-        .use-cases {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 2rem;
-            border-left: 4px solid #0ea5e9;
-        }
-
-        .use-cases h3 {
-            color: #0c4a6e;
-            margin-bottom: 1.5rem;
-        }
-
-        .use-cases ul {
-            list-style: none;
-        }
-
-        .use-cases li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            color: #0c4a6e;
-            line-height: 1.6;
-        }
-
-        .use-cases li::before {
-            content: '💼';
-            position: absolute;
-            left: 0;
-            font-size: 1.1rem;
-        }
-
         .scope-section {
             background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
         }
@@ -341,72 +309,128 @@
             font-size: 0.9rem;
         }
 
-        .phases-container {
-            display: grid;
-            gap: 2rem;
-            margin-top: 2rem;
+        .phases-table {
+            overflow-x: auto;
+            margin: 2rem 0;
         }
 
-        .phase-card {
+        .phases-table table {
+            width: 100%;
+            border-collapse: collapse;
             background: white;
-            border: 2px solid #e8f4f8;
-            border-radius: 16px;
-            padding: 2.5rem;
-            position: relative;
-            transition: all 0.3s ease;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
-        .phase-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background-color: #667eea;
-        }
-
-        .phase-card:hover {
-            border-color: #667eea;
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.1);
-            transform: translateY(-3px);
-        }
-
-        .phase-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .phase-number {
-            width: 50px;
-            height: 50px;
-            background-color: #667eea;
+        .phases-table thead {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-right: 1rem;
         }
 
-        .phase-title {
-            font-size: 1.5rem;
-            font-weight: 700;
+        .phases-table th, .phases-table td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid #e8f4f8;
+        }
+
+        .phases-table th {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .phases-table tr:hover {
+            background: #f8fbff;
+        }
+
+        .phases-table .phase-name {
+            font-weight: 600;
             color: #1e3c72;
         }
 
-        .phase-description {
-            color: #64748b;
-            line-height: 1.7;
+        .total-investment {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            border-radius: 16px;
+        }
+
+        .total-investment h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .total-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .total-timeline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .payment-table {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .payment-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .payment-table thead {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+        }
+
+        .payment-table th, .payment-table td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid #e8f4f8;
+        }
+
+        .payment-table th {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .payment-table tr:hover {
+            background: #f8fbff;
+        }
+
+        .payment-table .amount {
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .saas-pricing {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .saas-pricing h3 {
+            font-size: 1.5rem;
             margin-bottom: 1rem;
         }
 
-        .why-technizoit {
-            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+        .saas-pricing .price-range {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
         }
 
         .features-grid {
@@ -536,41 +560,8 @@
             transform: translateY(-2px);
         }
 
-        .out-of-scope {
-            background: #fef3c7;
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-left: 4px solid #f59e0b;
-            margin-top: 2rem;
-        }
-
-        .out-of-scope h4 {
-            color: #f59e0b;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .out-of-scope ul {
-            color: #92400e;
-        }
-
-        .tbd-section {
-            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 2rem;
-            border-left: 4px solid #8b5cf6;
-            text-align: center;
-        }
-
-        .tbd-section h3 {
-            color: #5b21b6;
-            margin-bottom: 1rem;
-        }
-
-        .tbd-section p {
-            color: #6b21a8;
-            font-size: 1.1rem;
+        .why-technizoit {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
         }
 
         @media print {
@@ -600,11 +591,6 @@
             .section {
                 page-break-inside: avoid;
             }
-            
-            .phase-card {
-                page-break-inside: avoid;
-                margin-bottom: 1rem;
-            }
         }
 
         @media (max-width: 768px) {
@@ -629,6 +615,10 @@
                 margin: 1rem;
                 padding: 2rem;
             }
+
+            .total-amount {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -638,11 +628,11 @@
         <div class="header">
             <div class="header-content">
                 <div class="logo">
-                    <img src="./images/technizoit_logo_with_text.png" alt="Technizoit Logo" class="logo" />
+                    <img src="./images/technizoit_logo_with_text.png" alt="Technizoit Logo" />
                 </div>
                 <div class="tagline">Your business problems • Our technology solutions</div>
-                <h1 class="title">Technospy Attendance Management Platform</h1>
-                <p class="subtitle">Next-generation attendance tracking solution with mobile, biometric, and geo-location capabilities</p>
+                <h1 class="title">Technospy Attendance SaaS Platform</h1>
+                <p class="subtitle">Multi-tenant cloud platform with seamless biometric device integration and recurring revenue model</p>
             </div>
         </div>
 
@@ -650,13 +640,16 @@
         <div class="cover-letter">
             <h3>Dear Technospy Team,</h3>
             <p>
-                Thank you for giving us the opportunity to collaborate on building a next-generation attendance management platform. After reviewing the requirements you shared and understanding your vision to provide seamless attendance tracking solutions through mobile and biometric devices, we are excited to partner with you in transforming how organizations manage their workforce.
+                Thank you for considering Technizoit as your partner to build a robust, scalable, and modern Attendance SaaS platform that works seamlessly with your biometric devices (eSSL, ZKTeco, BioMax) and as a standalone cloud solution.
             </p>
             <p>
-                At Technizoit, we bring extensive experience in creating secure, scalable, and user-friendly applications for businesses across India, Singapore, USA and beyond. Our pragmatic, milestone-driven approach ensures timely delivery while focusing on performance, usability, and compliance.
+                We understand your vision to not only provide hardware to customers but to offer a complete end-to-end attendance management experience — one that is reliable, intelligent, and easy to use. This proposal outlines Technizoit's understanding of your needs, our recommended solution architecture, phased delivery plan, and pricing to bring this vision to life.
             </p>
             <p>
-                We look forward to working closely with your team to co-create an attendance solution that improves efficiency, builds trust, and scales with your organization's growth.
+                With our expertise in building device-integrated SaaS platforms, multi-tenant architectures, and mobile-first employee experiences, we are confident in our ability to deliver a high-quality, future-ready platform that will help you scale your device sales and generate recurring revenue through software.
+            </p>
+            <p>
+                We look forward to collaborating closely with your team to build a product that becomes the go-to solution for attendance management across industries.
             </p>
             <div class="signature">
                 Warmly,<br>
@@ -672,28 +665,19 @@
                 <div style="background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid #1e3c72;">
                     <h3 style="color: #1e3c72; margin-bottom: 1rem; font-size: 1.3rem;">Project Definition</h3>
                     <p style="color: #64748b; line-height: 1.7; font-size: 1.1rem;">
-                        Technospy aims to develop a comprehensive attendance platform that enables employees to mark attendance through mobile apps, biometric devices, and geo-location, while offering administrators real-time tracking, reporting, and management tools to streamline operations.
+                        The project aims to build a multi-tenant Attendance SaaS platform that integrates with Technospy's biometric devices (eSSL, ZKTeco, BioMax) while also supporting standalone mobile/web attendance (QR code, geofencing, selfie + liveness).
                     </p>
                 </div>
 
                 <h3 style="color: #1e3c72; margin-bottom: 1.5rem; font-size: 1.5rem;">Primary Objectives</h3>
                 
                 <ul class="objectives-list">
-                    <li>Enable employees to mark attendance via GPS, facial recognition, QR codes, or fingerprint devices with accuracy and convenience</li>
-                    <li>Provide real-time access to attendance logs and reports for administrators and employees alike</li>
-                    <li>Automate leave management, scheduling, and alerts to enhance productivity</li>
-                    <li>Securely store sensitive attendance data with compliance to privacy standards</li>
-                    <li>Create a scalable platform that can support future enhancements like payroll integration, multi-location support, and AI-driven insights</li>
+                    <li><strong>Seamless Device Integration</strong> with eSSL, ZKTeco, BioMax via push/ADMS or site gateway</li>
+                    <li><strong>Multi-Tenant Cloud Platform</strong> supporting multiple companies with their own policies</li>
+                    <li><strong>Modern Employee Experience</strong> with mobile/web apps for punching, leave, notifications</li>
+                    <li><strong>Powerful Admin Dashboard</strong> for HR, managers, and payroll teams</li>
+                    <li><strong>Recurring Revenue Model</strong> so you can bundle software with your hardware offering</li>
                 </ul>
-
-                <div class="use-cases">
-                    <h3>Example Use Cases</h3>
-                    <ul>
-                        <li>A field technician marking attendance through GPS from remote sites</li>
-                        <li>An HR manager tracking employee attendance across multiple departments and locations</li>
-                        <li>Employees accessing their attendance history and submitting leave requests through the mobile app</li>
-                    </ul>
-                </div>
             </div>
 
             <!-- Scope Summary -->
@@ -702,52 +686,44 @@
                 
                 <div class="scope-grid">
                     <div class="scope-card">
-                        <h4>Mobile App (Android & iOS)</h4>
+                        <h4>Web Admin Panel</h4>
                         <ul class="scope-list">
-                            <li>Attendance marking via biometric, face recognition, GPS, and QR codes</li>
-                            <li>Notifications for check-ins, approvals, and attendance anomalies</li>
-                            <li>Leave requests, approvals, and balance tracking</li>
-                            <li>Access to attendance history and reports</li>
+                            <li>Organization setup, users, locations</li>
+                            <li>Device onboarding & health monitoring</li>
+                            <li>Shift & policy setup, holiday calendars</li>
+                            <li>Approvals (regularization, leave, OT)</li>
+                            <li>Reports, dashboards, and payroll exports</li>
                         </ul>
                     </div>
                     
                     <div class="scope-card">
-                        <h4>Web-based Admin Panel</h4>
+                        <h4>Mobile App</h4>
                         <ul class="scope-list">
-                            <li>Employee management with role-based access controls</li>
-                            <li>Shift scheduling, leave management, and policy settings</li>
-                            <li>Real-time dashboards and attendance analytics</li>
-                            <li>Reporting tools with export options for payroll and audits</li>
+                            <li>Punch-in/out (geo/QR/selfie), leave requests</li>
+                            <li>Notifications and attendance calendar view</li>
                         </ul>
                     </div>
                     
                     <div class="scope-card">
-                        <h4>Security & Compliance</h4>
+                        <h4>Core Features</h4>
                         <ul class="scope-list">
-                            <li>Encrypted data storage and secure communication channels</li>
-                            <li>Compliance with applicable data protection laws</li>
-                            <li>Audit trails and activity logs for accountability</li>
+                            <li>Multi-tenancy with subdomain-based access</li>
+                            <li>Role-based access control</li>
+                            <li>REST/GraphQL APIs & Webhooks</li>
+                            <li>DPDP-compliant data handling</li>
                         </ul>
                     </div>
-                </div>
-
-                <div class="out-of-scope">
-                    <h4>Out of Scope (Initial Release)</h4>
-                    <ul class="scope-list">
-                        <li>Deep integrations with external HR or ERP systems beyond API links</li>
-                        <li>Advanced analytics using AI (can be considered in later phases)</li>
-                    </ul>
                 </div>
             </div>
 
-            <!-- Solution Architecture -->
+            <!-- Solution & Technology Stack -->
             <div class="section">
-                <h2 class="section-title">Solution Architecture</h2>
+                <h2 class="section-title">Solution & Technology Stack</h2>
                 
                 <div style="background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%); padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
-                    <h3 style="color: #1e3c72; margin-bottom: 1rem; font-size: 1.3rem;">Architecture Pattern</h3>
+                    <h3 style="color: #1e3c72; margin-bottom: 1rem; font-size: 1.3rem;">Architecture</h3>
                     <p style="color: #64748b; line-height: 1.7; font-size: 1.1rem;">
-                        A cloud-native, modular design with service-oriented workflows that ensure scalability, reliability, and ease of maintenance.
+                        Service-oriented, multi-tenant SaaS platform with real-time ingestion, scalable APIs, and secure data handling.
                     </p>
                 </div>
 
@@ -755,32 +731,24 @@
                 
                 <div class="tech-grid">
                     <div class="tech-item">
+                        <h4>Frontend</h4>
+                        <p>Next.js/React, Tailwind</p>
+                    </div>
+                    <div class="tech-item">
                         <h4>Mobile</h4>
-                        <p>React Native (for both Android and iOS)</p>
-                    </div>
-                    <div class="tech-item">
-                        <h4>Web Admin</h4>
-                        <p>React / Next.js</p>
-                    </div>
-                    <div class="tech-item">
-                        <h4>Styling</h4>
-                        <p>Tailwind CSS for fast and consistent UI development</p>
+                        <p>React Native (iOS + Android)</p>
                     </div>
                     <div class="tech-item">
                         <h4>Backend</h4>
-                        <p>Node.js with PostgreSQL, Redis for caching</p>
+                        <p>Node.js (NestJS), PostgreSQL, Redis</p>
                     </div>
                     <div class="tech-item">
-                        <h4>Cloud Infrastructure</h4>
-                        <p>AWS services like RDS, S3, CloudFront, and CloudWatch</p>
+                        <h4>Infrastructure</h4>
+                        <p>AWS (RDS, S3, CloudFront), Docker-based deployment</p>
                     </div>
                     <div class="tech-item">
                         <h4>Security</h4>
-                        <p>OAuth2, encryption, and secure audit logging</p>
-                    </div>
-                    <div class="tech-item">
-                        <h4>Integrations</h4>
-                        <p>Payment gateways, SMS/email alerts, and biometric systems</p>
+                        <p>OAuth2/JWT, TLS 1.2+, AES-256 encryption, audit logs</p>
                     </div>
                 </div>
             </div>
@@ -789,97 +757,306 @@
             <div class="section">
                 <h2 class="section-title">Phased Delivery Plan</h2>
                 
-                <div class="phases-container">
-                    <!-- Phase 0 -->
-                    <div class="phase-card">
-                        <div class="phase-header">
-                            <div class="phase-number">0</div>
-                            <h3 class="phase-title">Inception</h3>
-                        </div>
-                        <p class="phase-description">
-                            Workshops to finalize features, architecture, user flows, and technical requirements.
-                        </p>
-                    </div>
-
-                    <!-- Phase 1 -->
-                    <div class="phase-card">
-                        <div class="phase-header">
-                            <div class="phase-number">1</div>
-                            <h3 class="phase-title">Core Attendance Features</h3>
-                        </div>
-                        <p class="phase-description">
-                            Employee registration, check-in/check-out, and notifications.
-                        </p>
-                    </div>
-
-                    <!-- Phase 2 -->
-                    <div class="phase-card">
-                        <div class="phase-header">
-                            <div class="phase-number">2</div>
-                            <h3 class="phase-title">Scheduling & Leave Management</h3>
-                        </div>
-                        <p class="phase-description">
-                            Shift allocation, leave policies, and alerts.
-                        </p>
-                    </div>
-
-                    <!-- Phase 3 -->
-                    <div class="phase-card">
-                        <div class="phase-header">
-                            <div class="phase-number">3</div>
-                            <h3 class="phase-title">Reporting & Admin Tools</h3>
-                        </div>
-                        <p class="phase-description">
-                            Analytics dashboards, exportable reports, and audit logs.
-                        </p>
-                    </div>
+                <div class="phases-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Phase</th>
+                                <th>Scope</th>
+                                <th style="text-align: center;">Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="phase-name">Phase 0</td>
+                                <td>Discovery & Design</td>
+                                <td style="text-align: center;">1 week</td>
+                            </tr>
+                            <tr>
+                                <td class="phase-name">Phase 1</td>
+                                <td>Core Platform & Device Integration</td>
+                                <td style="text-align: center;">3 weeks</td>
+                            </tr>
+                            <tr>
+                                <td class="phase-name">Phase 2</td>
+                                <td>Attendance Engine & Policies</td>
+                                <td style="text-align: center;">3 weeks</td>
+                            </tr>
+                            <tr>
+                                <td class="phase-name">Phase 3</td>
+                                <td>Approvals & Reporting</td>
+                                <td style="text-align: center;">2 weeks</td>
+                            </tr>
+                            <tr>
+                                <td class="phase-name">Phase 4</td>
+                                <td>Mobile App</td>
+                                <td style="text-align: center;">3 weeks</td>
+                            </tr>
+                            <tr>
+                                <td class="phase-name">Phase 5</td>
+                                <td>Pilot & UAT</td>
+                                <td style="text-align: center;">2 weeks</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <div class="tbd-section">
-                    <h3>Project Timeline & Further Phases</h3>
-                    <p>Timeline and additional phases (like advanced analytics, payroll systems, etc.) to be discussed and finalized based on scope and requirements.</p>
+                <div class="total-investment">
+                    <h3>Total Project Duration</h3>
+                    <div class="total-amount">15-16 Weeks</div>
+                    <div class="total-timeline">Milestone-Based Delivery</div>
                 </div>
             </div>
 
-            <!-- Pricing Structure -->
+            <!-- Payment Structure -->
             <div class="section">
-                <h2 class="section-title">Pricing Structure</h2>
+                <h2 class="section-title">Payment Structure</h2>
                 
-                <div class="tbd-section">
-                    <h3>Total Project Cost & Payment Terms</h3>
-                    <p>To be discussed and finalized based on project features, scale, integrations, and requirements alignment.</p>
+                <div style="text-align: center; margin-bottom: 2rem; padding: 2rem; background: linear-gradient(135deg, #22c55e, #16a34a); color: white; border-radius: 16px;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Total Project Cost</h3>
+                    <div style="font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem;">₹15 Lakhs</div>
+                    <div style="font-size: 1.2rem; opacity: 0.9;">(Exclusive of GST)</div>
+                </div>
+                
+                <div class="payment-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Milestone</th>
+                                <th style="text-align: center;">Payment</th>
+                                <th>Trigger</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: 600; color: #1e3c72;">Milestone 1</td>
+                                <td class="amount" style="text-align: center;">10% (₹1.5 L)</td>
+                                <td>Project Kick-off (after Discovery & Design)</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: #1e3c72;">Milestone 2</td>
+                                <td class="amount" style="text-align: center;">30% (₹4.5 L)</td>
+                                <td>Completion of Core Platform & Device Integration (Phase 1)</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: #1e3c72;">Milestone 3</td>
+                                <td class="amount" style="text-align: center;">30% (₹4.5 L)</td>
+                                <td>Completion of Attendance Engine, Policies & Approvals (Phase 2–3)</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: #1e3c72;">Milestone 4</td>
+                                <td class="amount" style="text-align: center;">30% (₹4.5 L)</td>
+                                <td>Final Delivery, Deployment & UAT Sign-off (Phase 4–5)</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <div class="overview-grid" style="margin-top: 3rem;">
-                    <div class="overview-card">
-                        <div class="card-icon">📋</div>
-                        <div class="card-title">Transparent Pricing</div>
-                        <div class="card-description">
-                            Milestone-based payment structure aligned with deliverables and project phases
-                        </div>
-                    </div>
-                    <div class="overview-card">
-                        <div class="card-icon">⚖️</div>
-                        <div class="card-title">Flexible Terms</div>
-                        <div class="card-description">
-                            Payment terms and structure to be customized based on project scope and client preferences
-                        </div>
-                    </div>
-                    <div class="overview-card">
-                        <div class="card-icon">🎯</div>
-                        <div class="card-title">Value-Based Approach</div>
-                        <div class="card-description">
-                            Pricing aligned with delivered value and measurable business outcomes
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
             <!-- Why Technizoit -->
             <div class="section why-technizoit">
                 <h2 class="section-title">Why Technizoit</h2>
-                <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; color: #64748b; text-align: center; max-width: 900px; margin: 0 auto 2rem;">
-                    We believe that technology should simplify complexity and empower teams to achieve their best work. At Technizoit, we combine technical expertise with domain understanding to build solutions that are intuitive, secure, and scalable.
-                </p>
                 
                 <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🏢</div>
+                        <div class="feature-content">
+                            <h4>Proven SaaS Expertise</h4>
+                            <p>Multi-tenant architectures with role-based access, and scalable infrastructure</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔒</div>
+                        <div class="feature-content">
+                            <h4>Security & Compliance</h4>
+                            <p>DPDP compliance, encryption at rest and in transit, comprehensive audit trails</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⚡</div>
+                        <div class="feature-content">
+                            <h4>Speed & Quality</h4>
+                            <p>Milestone-driven delivery with weekly demos and transparent progress tracking</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: white; border-radius: 16px; border: 2px solid #1e3c72;">
+                    <h3 style="color: #1e3c72; margin-bottom: 1rem; font-size: 1.5rem;">Our Portfolio</h3>
+                    <p style="color: #64748b; margin-bottom: 1.5rem; font-size: 1.1rem;">
+                        Explore our successful projects across various industries including healthcare, education, and enterprise solutions.
+                    </p>
+                    <div class="contact-links">
+                        <a href="https://technizoit.github.io/technizoit-docs/portfolio.html" style="background: #1e3c72; color: white; text-decoration: none; padding: 0.8rem 1.5rem; border-radius: 25px; font-weight: 600; margin: 0.5rem;" target="_blank">
+                            View Portfolio
+                        </a>
+                        <a href="https://www.technizoit.com/" style="background: white; color: #1e3c72; border: 2px solid #1e3c72; text-decoration: none; padding: 0.8rem 1.5rem; border-radius: 25px; font-weight: 600; margin: 0.5rem;" target="_blank">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Device Integration Capabilities -->
+            <div class="section">
+                <h2 class="section-title">Device Integration Capabilities</h2>
+                
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <div class="card-icon">📡</div>
+                        <div class="card-title">eSSL Integration</div>
+                        <div class="card-description">
+                            Native integration with eSSL biometric devices via push protocols and ADMS connectivity for real-time attendance sync
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">🔐</div>
+                        <div class="card-title">ZKTeco Support</div>
+                        <div class="card-description">
+                            Seamless connectivity with ZKTeco devices using standard protocols for fingerprint and face recognition data
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">⚡</div>
+                        <div class="card-title">BioMax Compatibility</div>
+                        <div class="card-description">
+                            Full support for BioMax devices with real-time data ingestion and device health monitoring
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">🌐</div>
+                        <div class="card-title">Site Gateway</div>
+                        <div class="card-description">
+                            On-premise gateway solutions for secure device connectivity and data transmission to cloud platform
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SaaS Revenue Benefits -->
+            <div class="section">
+                <h2 class="section-title">SaaS Revenue Model Benefits</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">💰</div>
+                        <div class="feature-content">
+                            <h4>Recurring Revenue</h4>
+                            <p>Transform one-time hardware sales into ongoing subscription revenue with ₹50-100 per employee monthly</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📈</div>
+                        <div class="feature-content">
+                            <h4>Scalable Business</h4>
+                            <p>Each new client adds recurring revenue without proportional increase in support costs</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-content">
+                            <h4>Customer Retention</h4>
+                            <p>SaaS model increases customer lifetime value and reduces churn through ongoing engagement</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔧</div>
+                        <div class="feature-content">
+                            <h4>Hardware Differentiation</h4>
+                            <p>Bundle software with hardware to create competitive advantage and higher margins</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Platform Features -->
+            <div class="section scope-section">
+                <h2 class="section-title">Platform Features & Capabilities</h2>
+                
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <div class="card-icon">🏢</div>
+                        <div class="card-title">Multi-Tenant Architecture</div>
+                        <div class="card-description">
+                            Complete tenant isolation with custom branding, and independent configurations
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">📱</div>
+                        <div class="card-title">Mobile-First Experience</div>
+                        <div class="card-description">
+                            Native mobile apps with QR code, geofencing, and selfie + liveness detection for remote attendance
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">🔍</div>
+                        <div class="card-title">Real-Time Monitoring</div>
+                        <div class="card-description">
+                            Live device health monitoring, attendance tracking, and instant alerts for system anomalies
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">📊</div>
+                        <div class="card-title">Advanced Analytics</div>
+                        <div class="card-description">
+                            Comprehensive reporting, payroll exports, and workforce analytics with customizable dashboards
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">🔗</div>
+                        <div class="card-title">API & Webhooks</div>
+                        <div class="card-description">
+                            REST/GraphQL APIs and webhook notifications for seamless integration with existing systems
+                        </div>
+                    </div>
+                    
+                    <div class="overview-card">
+                        <div class="card-icon">⚙️</div>
+                        <div class="card-title">Policy Management</div>
+                        <div class="card-description">
+                            Flexible shift patterns, holiday calendars, leave policies, and approval workflows
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="section conclusion-section">
+                <h2 class="section-title">Next Steps</h2>
+                <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; opacity: 0.95; text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                    We are excited to partner with Technospy to build this platform and help you scale your business through a differentiated SaaS offering.
+                </p>
+                
+                <ul class="next-steps">
+                    <li>Confirm device model list and pilot customers</li>
+                    <li>Approve scope and milestone plan</li>
+                    <li>Begin discovery workshop & development</li>
+                </ul>
+
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Ready to Build Your SaaS Platform?</h3>
+                    <p style="margin-bottom: 2rem; opacity: 0.9;">Let's schedule a discovery workshop to finalize device specifications and kick off the development process.</p>
+                    
+                    <div class="contact-links">
+                        <a href="mailto:hello@technizoit.com" class="contact-link">
+                            Start Discovery Workshop
+                        </a>
+                        <a href="https://www.technizoit.com/" class="contact-link" target="_blank">
+                            Visit Website
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
