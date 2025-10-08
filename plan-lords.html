@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lord's Path - Mobile Application Rollout Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .header-strip {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            padding: 3px 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .logo-section {
+            margin-bottom: 20px;
+        }
+        
+        .logo-section h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: -1px;
+        }
+        
+        .logo-section .pathology {
+            text-transform: uppercase;
+            font-size: 1.4em;
+            font-weight: 300;
+            opacity: 0.95;
+            letter-spacing: 2px;
+        }
+        
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 300;
+            margin-top: 20px;
+        }
+        
+        .trust-banner {
+            background: #f0f9ff;
+            padding: 25px 40px;
+            border-bottom: 3px solid #2563eb;
+        }
+        
+        .trust-stats {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .trust-item {
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .trust-item .number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #1e3a8a;
+            display: block;
+        }
+        
+        .trust-item .label {
+            font-size: 0.95em;
+            color: #555;
+            margin-top: 5px;
+        }
+        
+        .content {
+            padding: 50px 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #1e3a8a;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #2563eb;
+            font-weight: 600;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 35px;
+            border: 2px solid #e5e7eb;
+            border-left: 6px solid #2563eb;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+            border-left-width: 8px;
+        }
+        
+        .feature-card h3 {
+            color: #1e3a8a;
+            font-size: 1.5em;
+            margin-bottom: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .feature-icon {
+            font-size: 1.3em;
+        }
+        
+        .feature-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-card li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+        
+        .feature-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 30px 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .timeline-marker {
+            flex-shrink: 0;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.4em;
+            margin-right: 30px;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid #e5e7eb;
+            border-left: 5px solid #2563eb;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .timeline-content h3 {
+            color: #1e3a8a;
+            font-size: 1.5em;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .timeline-duration {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 6px 18px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
+        
+        .timeline-content p {
+            color: #4b5563;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+        
+        .summary-box {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.25);
+        }
+        
+        .summary-box h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .summary-box .timeline-total {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin: 20px 0;
+            letter-spacing: -1px;
+        }
+        
+        .summary-box p {
+            font-size: 1.15em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        footer {
+            background: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 30px 40px;
+            margin-top: 0;
+        }
+        
+        footer p {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+        
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-marker {
+                margin-bottom: 15px;
+                margin-right: 0;
+            }
+            
+            .trust-stats {
+                flex-direction: column;
+            }
+            
+            .trust-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-strip"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo-section">
+                <img src="https://lordspath.com/wp-content/uploads/2024/11/cropped-Lords_Pathology_Logo-removebg-preview.png.webp" alt="Lord's Path Logo" style="background-color: white; height: 150px; margin-bottom: 15px;">
+                <!-- <h1>LORD'S PATH</h1> -->
+                <!-- <div class="pathology">Features and Plan Document</div> -->
+                 <div class="pathology">Lord's Path Mobile Application Project</div>
+            </div>
+            <!-- <p>Project plan and features</p> -->
+        </header>
+
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">Platform Features</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3><span class="feature-icon">📱</span> User Mobile Application</h3>
+                        <ul>
+                            <li>Comprehensive listing of packages and available tests</li>
+                            <li>Seamless lab test booking experience</li>
+                            <li>Appointment scheduling for home sample collection</li>
+                            <li>Real-time tracking of tests and sample status</li>
+                            <li>Digital access to medical reports</li>
+                            <li>Secure payment integration</li>
+                            <li>AI-powered analysis of test reports for patients</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3><span class="feature-icon">💼</span> Admin Web Application</h3>
+                        <ul>
+                            <li>Complete management of packages, tests, and pricing</li>
+                            <li>Location-based package and test configuration</li>
+                            <li>Comprehensive booking and status management</li>
+                            <li>Payment processing and refund management</li>
+                            <li>Advanced reporting and analytics dashboard</li>
+                            <li>Integration with AI report analysis system</li>
+                            <li>Notification management for mobile and web</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Delivery Roadmap</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <h3>Inception Phase</h3>
+                            <span class="timeline-duration">2 Weeks</span>
+                            <p>Foundation workshops to finalize feature specifications, establish technical architecture, and create comprehensive design flows. This phase ensures alignment across all stakeholders and sets the technical direction for the project.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">2</div>
+                        <div class="timeline-content">
+                            <h3>App Booking & Profile Management</h3>
+                            <span class="timeline-duration">1 Month</span>
+                            <p>Development of core user-facing features including lab test booking system, appointment scheduling interface, user registration and authentication, and basic payment gateway integration to enable transactions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">3</div>
+                        <div class="timeline-content">
+                            <h3>Admin Panel Development</h3>
+                            <span class="timeline-duration">1 Month</span>
+                            <p>Creation of comprehensive administrative tools including test and package configuration, report upload system, analytics dashboard, mobile app AI integration, and notification system for both mobile and web platforms.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">4</div>
+                        <div class="timeline-content">
+                            <h3>Deployment, QA & Go Live</h3>
+                            <span class="timeline-duration">1 Month</span>
+                            <p>Rigorous quality assurance testing, performance optimization, bug fixes, deployment to production environment, and final preparations for market launch with continuous monitoring.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="summary-box">
+                <h3>Total Project Timeline</h3>
+                <div class="timeline-total">3.5 Months</div>
+                <p>From inception to production deployment</p>
+                <p style="margin-top: 15px; font-size: 1.05em;">End-to-end healthcare lab management solution with AI-powered insights</p>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
