@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery Platform - Technizoit Proposal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #3b5998 0%, #2c4a7c 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            color: #FFF;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #FFF;
+        }
+
+        .meta-info {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 1.5rem;
+        }
+
+        .cover-letter {
+            background: #f0f4f8;
+            border-left: 5px solid #3b5998;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 8px;
+        }
+
+        .cover-letter h2 {
+            color: #2c4a7c;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cover-letter p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .signature {
+            margin-top: 2rem;
+            font-weight: 600;
+            color: #2c4a7c;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #2c4a7c;
+            font-weight: 700;
+            border-left: 5px solid #3b5998;
+            padding-left: 20px;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            margin: 2rem 0 1rem;
+            color: #2c4a7c;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 2rem 0;
+        }
+
+        .module-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+            border-top: 4px solid #3b5998;
+        }
+
+        .module-card h4 {
+            color: #2c4a7c;
+            margin-top: 0;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-platform {
+            display: inline-block;
+            background: #e8eef5;
+            color: #3b5998;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .module-card p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .features-section h3 {
+            color: #2c4a7c;
+            margin-top: 2.5rem;
+            font-size: 1.5rem;
+        }
+
+        .features-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .features-section li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            font-size: 1.05rem;
+            color: #555;
+        }
+
+        .features-section li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #3b5998;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 2rem 0;
+        }
+
+        .tech-item {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .tech-label {
+            font-weight: 600;
+            color: #2c4a7c;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .tech-value {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .timeline {
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #3b5998;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .phase-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c4a7c;
+        }
+
+        .phase-meta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .phase-duration {
+            background: #3b5998;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .phase-milestone {
+            background: #e8eef5;
+            color: #3b5998;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .timeline-item p {
+            color: #666;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .timeline-summary {
+            background: #f0f4f8;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c4a7c;
+        }
+
+        .pricing-box {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .pricing-table {
+            width: 100%;
+            margin: 2rem 0;
+            border-collapse: collapse;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .pricing-table th {
+            background: #f0f4f8;
+            color: #2c4a7c;
+            font-weight: 600;
+        }
+
+        .pricing-total {
+            background: linear-gradient(135deg, #3b5998 0%, #2c4a7c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .pricing-total .amount {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .pricing-total .note {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .payment-milestones {
+            margin: 2rem 0;
+        }
+
+        .payment-milestones ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .payment-milestones li {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 4px solid #3b5998;
+            font-size: 1.05rem;
+            color: #555;
+        }
+
+        .highlight-box {
+            background: #fff9e6;
+            border-left: 5px solid #ffc107;
+            padding: 25px;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box h3 {
+            color: #d68910;
+            margin-top: 0;
+        }
+
+        .highlight-box ul {
+            margin: 1rem 0;
+        }
+
+        .highlight-box li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+            color: #666;
+        }
+
+        .highlight-box li::before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: #d68910;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .support-box {
+            background: #f0f4f8;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 2rem 0;
+        }
+
+        .support-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .support-item strong {
+            color: #2c4a7c;
+            font-size: 1.1rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 2rem 0;
+        }
+
+        .benefit-item {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-title {
+            font-weight: 600;
+            color: #2c4a7c;
+            margin-bottom: 0.8rem;
+            font-size: 1.15rem;
+        }
+
+        .benefit-description {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #3b5998 0%, #2c4a7c 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            border: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .cta-section ul {
+            list-style: none;
+            font-size: 1.15rem;
+            margin: 2rem 0;
+            padding: 0;
+        }
+
+        .cta-section li {
+            margin: 1rem 0;
+            color: white;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #3b5998;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .pricing-total .amount {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+            <img
+              src="./images/technizoit_logo_with_text.png"
+              alt="Technizoit Logo"
+              class="logo"
+            />
+          </div>
+            <p class="tagline">Your business problems • Our technology solutions</p>
+            <h1>Food Delivery Platform Development</h1>
+            <p class="subtitle">Connecting customers, restaurants, and delivery partners through a seamless, modern, and scalable solution</p>
+            <div class="meta-info">
+                <strong>Prepared by:</strong> Technizoit Private Limited<br>
+                <strong>Date:</strong> October 2025 | <strong>Version:</strong> 1.0
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="cover-letter">
+                <h2>Dear Shamran,</h2>
+                <p>Thank you for considering Technizoit Private Limited as your technology partner. We are excited to present this proposal for developing a comprehensive Food Delivery Platform — connecting customers, restaurants, and delivery partners through a seamless, modern, and scalable solution.</p>
+                <p>With our deep expertise in React Native, NestJS, and PostgreSQL, we bring a proven process to deliver fast, secure, and production-ready applications within just 9 weeks.</p>
+                <p class="signature">Warm regards,<br>Technizoit Private Limited<br>Mumbai, India</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Project Overview</h2>
+            <p>The goal is to build a multi-role food delivery ecosystem comprising:</p>
+
+            <div class="modules-grid">
+                <div class="module-card">
+                    <h4>Customer App</h4>
+                    <span class="module-platform">iOS & Android</span>
+                    <p>Browse restaurants, place orders, make payments, and track deliveries live.</p>
+                </div>
+
+                <div class="module-card">
+                    <h4>Rider App</h4>
+                    <span class="module-platform">iOS & Android</span>
+                    <p>Accept deliveries, navigate via maps, and update delivery status in real time.</p>
+                </div>
+
+                <div class="module-card">
+                    <h4>Restaurant App</h4>
+                    <span class="module-platform">iOS & Android</span>
+                    <p>Manage menu, prices, orders, and availability.</p>
+                </div>
+
+                <div class="module-card">
+                    <h4>Restaurant Web App</h4>
+                    <span class="module-platform">Web</span>
+                    <p>Manage menu, orders, and restaurant operations through web interface.</p>
+                </div>
+
+                <div class="module-card">
+                    <h4>Admin Dashboard</h4>
+                    <span class="module-platform">Web</span>
+                    <p>Manage restaurants, customers, riders, orders, commissions, and analytics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2>Core Features</h2>
+
+            <h3>Customer App</h3>
+            <ul>
+                <li>User registration and OTP login</li>
+                <li>Search, browse, and filter restaurants</li>
+                <li>Add to cart, apply coupons, and make secure payments</li>
+                <li>Live order tracking on map</li>
+                <li>Push notifications and delivery updates</li>
+                <li>Ratings, reviews, and order history</li>
+            </ul>
+
+            <h3>Rider App</h3>
+            <ul>
+                <li>Accept / reject deliveries</li>
+                <li>Navigate via Google Maps</li>
+                <li>Update status: Accepted → Picked → Delivered</li>
+                <li>Daily earnings and delivery history</li>
+                <li>OTP verification at delivery</li>
+            </ul>
+
+            <h3>Restaurant App</h3>
+            <ul>
+                <li>Receive and manage orders</li>
+                <li>Menu and pricing control</li>
+                <li>Restaurant open/close toggle</li>
+                <li>Daily order reports</li>
+                <li>Order history and insights</li>
+            </ul>
+
+            <h3>Restaurant Web App</h3>
+            <ul>
+                <li>Menu and pricing management</li>
+                <li>Order management and tracking</li>
+                <li>Restaurant open/close toggle</li>
+                <li>Daily and monthly reports</li>
+                <li>Performance analytics and insights</li>
+            </ul>
+
+            <h3>Admin Dashboard</h3>
+            <ul>
+                <li>Role-based user management (admins, restaurants, riders)</li>
+                <li>Restaurant approvals and commission management</li>
+                <li>Order tracking and escalation handling</li>
+                <li>Promo code and banner management</li>
+                <li>Advanced analytics dashboard (orders, earnings, user activity)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Technology Stack</h2>
+
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <div class="tech-label">Frontend (Mobile)</div>
+                    <div class="tech-value">React Native (Expo / Bare workflow)</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-label">Frontend (Web)</div>
+                    <div class="tech-value">React + MUI</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-label">Backend</div>
+                    <div class="tech-value">NestJS (Node.js) + PostgreSQL</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-label">API Auth</div>
+                    <div class="tech-value">JWT-based authentication</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-label">Hosting & Infra</div>
+                    <div class="tech-value">AWS (EC2, RDS, S3, CloudFront) — client-owned accounts</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-label">Maps & Location</div>
+                    <div class="tech-value">Google Maps API</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-label">Payments</div>
+                    <div class="tech-value">Razorpay / Stripe</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-label">Notifications</div>
+                    <div class="tech-value">Firebase Cloud Messaging</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-label">Realtime Updates</div>
+                    <div class="tech-value">WebSockets (Socket.io)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Project Timeline — 11 Weeks</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="phase-name">Phase 1: Discovery & Design</div>
+                        <div class="phase-meta">
+                            <span class="phase-duration">1 week</span>
+                            <span class="phase-milestone">10%</span>
+                        </div>
+                    </div>
+                    <p>Requirements finalization, UI/UX design system, architecture setup</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="phase-name">Phase 2: Backend Setup & Admin Dashboard</div>
+                        <div class="phase-meta">
+                            <span class="phase-duration">2 weeks</span>
+                            <span class="phase-milestone">20%</span>
+                        </div>
+                    </div>
+                    <p>Core backend modules (auth, restaurants, orders, roles) + Admin dashboard</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="phase-name">Phase 3: Customer App</div>
+                        <div class="phase-meta">
+                            <span class="phase-duration">2 weeks</span>
+                            <span class="phase-milestone">20%</span>
+                        </div>
+                    </div>
+                    <p>Ordering flow, cart, payments, and tracking</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="phase-name">Phase 4: Restaurant App & Web</div>
+                        <div class="phase-meta">
+                            <span class="phase-duration">2 weeks</span>
+                            <span class="phase-milestone">20%</span>
+                        </div>
+                    </div>
+                    <p>Restaurant mobile app and web interface for order management</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="phase-name">Phase 5: Rider App</div>
+                        <div class="phase-meta">
+                            <span class="phase-duration">2 weeks</span>
+                            <span class="phase-milestone">20%</span>
+                        </div>
+                    </div>
+                    <p>Rider delivery tracking and management</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="phase-name">Phase 6: QA, UAT & Deployment</div>
+                        <div class="phase-meta">
+                            <span class="phase-duration">2 weeks</span>
+                            <span class="phase-milestone">10%</span>
+                        </div>
+                    </div>
+                    <p>Testing, bug fixes, security hardening, AWS deployment, and handover</p>
+                </div>
+            </div>
+
+            <div class="timeline-summary">
+                Total Duration: 11 Weeks
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Commercials</h2>
+
+            <div class="pricing-box">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Scope</th>
+                            <th>Deliverables</th>
+                            <th>Cost (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>End-to-End Development</td>
+                            <td>Customer App, Rider App, Restaurant App, Restaurant Web App, Admin Dashboard, Backend APIs</td>
+                            <td>₹22,00,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Project Value</strong></td>
+                            <td>(Excluding infrastructure & 3rd-party fees)</td>
+                            <td><strong>₹22,00,000 + GST</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pricing-total">
+                <div class="amount">₹22,00,000</div>
+                <div class="note">+ GST (as applicable)</div>
+            </div>
+
+            <h3>Payment Milestones</h3>
+            <div class="payment-milestones">
+                <ul>
+                    <li>10% on project initiation</li>
+                    <li>20% on design & architecture completion</li>
+                    <li>20% on completion of Customer App</li>
+                    <li>20% on completion of Restaurant App & Web</li>
+                    <li>20% on completion of Rider App</li>
+                    <li>10% upon UAT sign-off and production deployment</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Infrastructure & Exclusions</h2>
+
+            <div class="highlight-box">
+                <h3>Client Responsibility</h3>
+                <p>All infrastructure and third-party costs are to be borne directly by the client. These include (but are not limited to):</p>
+                <ul>
+                    <li>Cloud hosting (AWS / Render / GCP)</li>
+                    <li>Domain & SSL</li>
+                    <li>Map APIs, SMS & email services</li>
+                    <li>Payment gateway fees</li>
+                    <li>CDN and media storage (S3 / Cloudflare R2)</li>
+                </ul>
+                <p><strong>Note:</strong> Technizoit will assist in configuration and deployment on client-owned accounts.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Post-Launch Support</h2>
+
+            <div class="support-box">
+                <div class="support-item">
+                    <strong>3 Months Free Technical Support</strong>
+                    <p>Bug fixes and performance tuning</p>
+                </div>
+                <div class="support-item">
+                    <strong>Optional Maintenance Plan: Monthly (To be discussed and agreed on)</strong>
+                    <p>For continuous monitoring, feature upgrades, and minor change requests</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Why Technizoit</h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">🏆</div>
+                    <div class="benefit-title">Proven Experience</div>
+                    <p class="benefit-description">End-to-end SaaS and delivery platforms</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-title">Modern Tech Stack</div>
+                    <p class="benefit-description">Expertise ensuring scalability and speed</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎨</div>
+                    <div class="benefit-title">Strong UI/UX Design</div>
+                    <p class="benefit-description">Intuitive, brand-consistent apps</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📊</div>
+                    <div class="benefit-title">Agile Delivery</div>
+                    <p class="benefit-description">Transparent weekly reporting</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div class="benefit-title">Trusted Partner</div>
+                    <p class="benefit-description">Quality, speed, and reliability</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Next Steps</h2>
+            <ul>
+                <li>✓ Approval of proposal & signing of agreement</li>
+                <li>✓ 10% advance payment to initiate project</li>
+                <li>✓ Kick-off call & design workshop</li>
+                <li>✓ Project tracking via shared Slack + weekly updates</li>
+            </ul>
+            
+            <a href="mailto:contact@technizoit.com" class="cta-button">Get Started Today</a>
+            
+            <p style="margin-top: 3rem; font-size: 1rem; opacity: 0.9; color: #FFF">
+                <strong>Technizoit Private Limited</strong><br>
+                Mumbai, India
+            </p>
+        </div>
+    </section>
+</body>
+</html>
