@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lord's Path Digital Platform - Technizoit Proposal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #667eea;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #2a5298;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.5;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .meta-info {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 1.5rem;
+        }
+
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 0;
+        }
+
+        .section {
+            padding: 3rem 2rem;
+            border-bottom: 1px solid #e8f4f8;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1e3c72;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #667eea;
+            border-radius: 2px;
+        }
+
+        .objective-box {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #1e3c72;
+        }
+
+        .objective-box h3 {
+            color: #1e3c72;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .objective-box p {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .app-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid #e8f4f8;
+            transition: all 0.3s ease;
+        }
+
+        .app-item:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+        }
+
+        .app-item h4 {
+            color: #1e3c72;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-item p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .scope-modules {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .module-card {
+            background: white;
+            border: 2px solid #e8f4f8;
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #667eea;
+        }
+
+        .module-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .module-card h3 {
+            color: #1e3c72;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-card h4 {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+            font-size: 1.05rem;
+            color: #555;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .timeline-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .timeline-table thead {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+        }
+
+        .timeline-table th,
+        .timeline-table td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid #e8f4f8;
+        }
+
+        .timeline-table th {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .timeline-table tr:hover {
+            background: #f8fbff;
+        }
+
+        .timeline-table .phase-name {
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .cost-breakdown-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .cost-breakdown-table thead {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+        }
+
+        .cost-breakdown-table th,
+        .cost-breakdown-table td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid #e8f4f8;
+        }
+
+        .cost-breakdown-table th {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .cost-breakdown-table tr:hover {
+            background: #f8fbff;
+        }
+
+        .cost-breakdown-table .amount {
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .cost-breakdown-table .total-row {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+            font-weight: 700;
+        }
+
+        .cost-breakdown-table .total-row td {
+            color: #1e3c72;
+            font-size: 1.2rem;
+        }
+
+        .payment-milestones-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .payment-milestones-table thead {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+        }
+
+        .payment-milestones-table th,
+        .payment-milestones-table td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid #e8f4f8;
+        }
+
+        .payment-milestones-table th {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .payment-milestones-table tr:hover {
+            background: #f8fbff;
+        }
+
+        .payment-milestones-table .milestone-name {
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .payment-milestones-table .amount {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .total-investment {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            border-radius: 16px;
+        }
+
+        .total-investment h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .total-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .total-note {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .assumptions-box {
+            background: #fff9e6;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #f59e0b;
+            margin: 2rem 0;
+        }
+
+        .assumptions-box h3 {
+            color: #d68910;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .assumptions-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .assumptions-box li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+            color: #92400e;
+            font-size: 1.05rem;
+        }
+
+        .assumptions-box li::before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: #f59e0b;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .summary-box {
+            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border-left: 6px solid #1e3c72;
+            text-align: center;
+        }
+
+        .summary-box h3 {
+            color: #1e3c72;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-box p {
+            color: #64748b;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .conclusion-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .conclusion-section .section-title {
+            color: white;
+        }
+
+        .conclusion-section .section-title::before {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                border-radius: 8px;
+            }
+            
+            .header {
+                padding: 2rem 1rem;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 2rem 1rem;
+            }
+            
+            .total-amount {
+                font-size: 2rem;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                <img src="https://lordspath.com/wp-content/uploads/2024/11/cropped-Lords_Pathology_Logo-removebg-preview.png.webp" alt="Lord's Path Logo" style="background-color: white; height: 150px; margin-bottom: 15px;">
+            </div>
+                <h1 class="title">Lord's Path Digital Platform</h1>
+                <p class="subtitle">Comprehensive Healthcare Solution for Modern Patient Care</p>
+                <div class="meta-info">
+                    <strong>Prepared by:</strong> Technizoit Private Limited<br>
+                    <strong>Date:</strong> October 14, 2025 | <strong>Version:</strong> 1.0
+                </div>
+                
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">9 Weeks</span>
+                        <span class="stat-label">Total Duration</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">₹25L</span>
+                        <span class="stat-label">Total Investment</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">4 Apps</span>
+                        <span class="stat-label">Integrated Platform</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Project Overview -->
+            <div class="section">
+                <h2 class="section-title">Project Overview</h2>
+                
+                <div class="objective-box">
+                    <h3>Objective</h3>
+                    <p>
+                        The Lord's Path Digital Platform is a comprehensive healthcare solution designed to streamline the patient journey — from diagnostic test booking and sample collection to smart health reports, doctor consultations, and digital prescriptions. The platform will consist of four integrated applications that work seamlessly together:
+                    </p>
+                    
+                    <div class="apps-grid">
+                        <div class="app-item">
+                            <h4>User Mobile Application</h4>
+                            <p>For patients to manage their health journey</p>
+                        </div>
+                        <div class="app-item">
+                            <h4>Lab Admin Web Application</h4>
+                            <p>For labs to manage operations, bookings, and resources</p>
+                        </div>
+                        <div class="app-item">
+                            <h4>Phlebotomist Mobile Application</h4>
+                            <p>For sample collection agents to manage assigned requests</p>
+                        </div>
+                        <div class="app-item">
+                            <h4>Doctor Application</h4>
+                            <p>For doctors to manage consultations and prescriptions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scope of Work -->
+            <div class="section">
+                <h2 class="section-title">Scope of Work</h2>
+
+                <div class="scope-modules">
+                    <!-- Module 1 -->
+                    <div class="module-card">
+                        <h3>1. User Mobile Application (iOS & Android)</h3>
+                        
+                        <h4>Authentication & Profile</h4>
+                        <ul class="feature-list">
+                            <li>OTP-based login</li>
+                            <li>Create and edit user profile</li>
+                        </ul>
+
+                        <h4>Health Insights & Recommendations</h4>
+                        <ul class="feature-list">
+                            <li>Organ health scores based on user inputs</li>
+                            <li>Test and package recommendations driven by health data</li>
+                        </ul>
+
+                        <h4>Lab Tests & Reports</h4>
+                        <ul class="feature-list">
+                            <li>Book lab tests (with or without smart reports)</li>
+                            <li>End-to-end test status tracking (temperature showcase for certain tests)</li>
+                            <li>View and download reports and smart reports</li>
+                            <li>Purchase test packages</li>
+                        </ul>
+
+                        <h4>Teleconsultation & Care</h4>
+                        <ul class="feature-list">
+                            <li>View doctor availability</li>
+                            <li>Chat and video consultation</li>
+                            <li>Digital prescription generation</li>
+                            <li>Language-based doctor matching</li>
+                        </ul>
+
+                        <h4>Payments & Engagement</h4>
+                        <ul class="feature-list">
+                            <li>Payment gateway integration</li>
+                            <li>Push notifications for status updates, reminders, and new recommendations</li>
+                        </ul>
+                    </div>
+
+                    <!-- Module 2 -->
+                    <div class="module-card">
+                        <h3>2. Lab Admin Web Application</h3>
+                        <ul class="feature-list">
+                            <li>Role-based login (Admin, Super Admin)</li>
+                            <li>Create, view, and edit lab details</li>
+                            <li>Manage lab tests and health packages (including One DNA tests)</li>
+                            <li>Add, view, or remove doctors and phlebotomists</li>
+                            <li>Auto-assign test requests to phlebotomists based on location and availability</li>
+                            <li>View and manage all bookings</li>
+                            <li>Report generation and management</li>
+                        </ul>
+                    </div>
+
+                    <!-- Module 3 -->
+                    <div class="module-card">
+                        <h3>3. Phlebotomist Mobile Application</h3>
+                        <ul class="feature-list">
+                            <li>OTP login and profile management</li>
+                            <li>View pending and completed requests</li>
+                            <li>Mark availability</li>
+                            <li>Update request status (accepted, rejected, on the way, sample collected, sample deposited)</li>
+                            <li>Push notifications for new requests and updates</li>
+                        </ul>
+                    </div>
+
+                    <!-- Module 4 -->
+                    <div class="module-card">
+                        <h3>4. Doctor Application</h3>
+                        <ul class="feature-list">
+                            <li>OTP login and profile management (including language)</li>
+                            <li>View past consultations</li>
+                            <li>Mark availability and accept new requests</li>
+                            <li>Conduct video and chat consultations</li>
+                            <li>Create and share prescriptions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Timeline -->
+            <div class="section">
+                <h2 class="section-title">Project Timeline (9 Weeks)</h2>
+
+                <table class="timeline-table">
+                    <thead>
+                        <tr>
+                            <th>Phase</th>
+                            <th>Duration</th>
+                            <th>Deliverables</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="phase-name">Phase 1: Discovery & Architecture</td>
+                            <td>Week 1</td>
+                            <td>Finalize requirements, system architecture, database schema, and API specs</td>
+                        </tr>
+                        <tr>
+                            <td class="phase-name">Phase 2: UI/UX Design</td>
+                            <td>Week 2</td>
+                            <td>Wireframes, visual design, and approval for all four apps</td>
+                        </tr>
+                        <tr>
+                            <td class="phase-name">Phase 3: Backend Development</td>
+                            <td>Weeks 3 – 4</td>
+                            <td>Core APIs, authentication, user management, role-based access, database setup</td>
+                        </tr>
+                        <tr>
+                            <td class="phase-name">Phase 4: Frontend Development – User App & Lab Web App</td>
+                            <td>Weeks 5 – 6</td>
+                            <td>User Mobile App core features, Lab Admin panel, payment integration</td>
+                        </tr>
+                        <tr>
+                            <td class="phase-name">Phase 5: Frontend Development – Phlebotomist & Doctor Apps</td>
+                            <td>Week 7</td>
+                            <td>Phlebo and Doctor app core modules</td>
+                        </tr>
+                        <tr>
+                            <td class="phase-name">Phase 6: Integrations & Testing</td>
+                            <td>Week 8</td>
+                            <td>Video, chat, payment, push notifications; end-to-end QA and UAT</td>
+                        </tr>
+                        <tr>
+                            <td class="phase-name">Phase 7: Deployment & Handover</td>
+                            <td>Week 9</td>
+                            <td>Final deployment, documentation, training, and go-live support</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Cost Breakdown -->
+            <div class="section">
+                <h2 class="section-title">Cost Breakdown (₹25,00,000)</h2>
+
+                <table class="cost-breakdown-table">
+                    <thead>
+                        <tr>
+                            <th>Module / Milestone</th>
+                            <th style="text-align: right;">Cost (₹)</th>
+                            <th style="text-align: center;">%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Discovery, Architecture & UI/UX</td>
+                            <td class="amount" style="text-align: right;">₹2,50,000</td>
+                            <td style="text-align: center;">10%</td>
+                        </tr>
+                        <tr>
+                            <td>Backend Development (APIs, Database, Auth)</td>
+                            <td class="amount" style="text-align: right;">₹5,00,000</td>
+                            <td style="text-align: center;">20%</td>
+                        </tr>
+                        <tr>
+                            <td>User Mobile Application</td>
+                            <td class="amount" style="text-align: right;">₹6,00,000</td>
+                            <td style="text-align: center;">24%</td>
+                        </tr>
+                        <tr>
+                            <td>Lab Admin Web Application</td>
+                            <td class="amount" style="text-align: right;">₹4,00,000</td>
+                            <td style="text-align: center;">16%</td>
+                        </tr>
+                        <tr>
+                            <td>Phlebotomist Mobile Application</td>
+                            <td class="amount" style="text-align: right;">₹2,50,000</td>
+                            <td style="text-align: center;">10%</td>
+                        </tr>
+                        <tr>
+                            <td>Doctor Application</td>
+                            <td class="amount" style="text-align: right;">₹2,50,000</td>
+                            <td style="text-align: center;">10%</td>
+                        </tr>
+                        <tr>
+                            <td>Integrations (Video, Chat, Payment, Push)</td>
+                            <td class="amount" style="text-align: right;">₹1,50,000</td>
+                            <td style="text-align: center;">6%</td>
+                        </tr>
+                        <tr>
+                            <td>QA, Deployment & Training</td>
+                            <td class="amount" style="text-align: right;">₹1,00,000</td>
+                            <td style="text-align: center;">4%</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>Total</strong></td>
+                            <td style="text-align: right;"><strong>₹25,00,000</strong></td>
+                            <td style="text-align: center;"><strong>100%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Payment Milestones -->
+            <div class="section">
+                <h2 class="section-title">Payment Milestones</h2>
+
+                <table class="payment-milestones-table">
+                    <thead>
+                        <tr>
+                            <th>Milestone</th>
+                            <th>Payment</th>
+                            <th>When Due</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="milestone-name">Project kickoff (Discovery + Design)</td>
+                            <td class="amount">₹2,50,000 (10%)</td>
+                            <td>On project start</td>
+                        </tr>
+                        <tr>
+                            <td class="milestone-name">Backend & Architecture Completion</td>
+                            <td class="amount">₹5,00,000 (20%)</td>
+                            <td>End of Week 4</td>
+                        </tr>
+                        <tr>
+                            <td class="milestone-name">User + Lab Modules Completion</td>
+                            <td class="amount">₹7,00,000 (28%)</td>
+                            <td>End of Week 6</td>
+                        </tr>
+                        <tr>
+                            <td class="milestone-name">Phlebotomist + Doctor Modules Completion</td>
+                            <td class="amount">₹5,00,000 (20%)</td>
+                            <td>End of Week 7</td>
+                        </tr>
+                        <tr>
+                            <td class="milestone-name">Final QA, Deployment & Handover</td>
+                            <td class="amount">₹5,50,000 (22%)</td>
+                            <td>End of Week 9 (Before production release)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="total-investment">
+                    <h3>Total Project Cost</h3>
+                    <div class="total-amount">₹25,00,000</div>
+                    <div class="total-note">Comprehensive Digital Healthcare Ecosystem</div>
+                </div>
+            </div>
+
+            <!-- Assumptions & Exclusions -->
+            <div class="section">
+                <h2 class="section-title">Assumptions & Exclusions</h2>
+
+                <div class="assumptions-box">
+                    <h3>Important Notes</h3>
+                    <ul>
+                        <li>This proposal covers core functionality as listed in the scope</li>
+                        <li>Hosting, cloud infrastructure, and third-party services (video API, SMS, payment gateway charges) are separate and would be incurred by the client</li>
+                        <li>Future enhancements (e.g., AI features, insurance integration, wearables) are excluded and can be scoped in subsequent phases</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="section">
+                <div class="summary-box">
+                    <h3>✅ Summary</h3>
+                    <p>
+                        Technizoit proposes to deliver the <strong>Lord's Path Digital Platform</strong> — a fully integrated digital healthcare ecosystem — in <strong>9 weeks</strong> at a total cost of <strong>₹25,00,000</strong>. This includes product design, development, QA, integrations, deployment, and handover.
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>
