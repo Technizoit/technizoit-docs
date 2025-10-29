@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PropNinja CRM & Lead Management Platform - Technizoit Proposal</title>
+    <title>Lead Management System - Technizoit Proposal</title>
     <style>
         * {
             margin: 0;
@@ -51,6 +51,7 @@
             position: relative;
             z-index: 2;
         }
+
         .logo {
             display: flex;
             align-items: center;
@@ -81,6 +82,36 @@
             font-size: 1.3rem;
             opacity: 0.95;
             font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .meta-info {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 1.5rem;
+        }
+
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
         }
 
         .content {
@@ -116,7 +147,7 @@
             border-radius: 2px;
         }
 
-        .objective-box {
+        .intro-box {
             background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
             padding: 2.5rem;
             border-radius: 12px;
@@ -124,42 +155,44 @@
             border-left: 4px solid #1e3c72;
         }
 
-        .objective-box p {
+        .intro-box p {
             color: #64748b;
             line-height: 1.8;
             font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .objectives-list {
             list-style: none;
             padding: 0;
-            margin-top: 1.5rem;
+            margin: 2rem 0;
         }
 
         .objectives-list li {
-            padding: 10px 0 10px 30px;
+            padding: 12px 0 12px 30px;
             position: relative;
             color: #64748b;
             font-size: 1.05rem;
+            line-height: 1.6;
         }
 
         .objectives-list li::before {
-            content: '•';
+            content: '✓';
             position: absolute;
-            left: 10px;
-            color: #667eea;
-            font-size: 1.5rem;
-            line-height: 1;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
-        .features-grid {
+        .scope-grid {
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        .feature-card {
+        .scope-card {
             background: white;
             border: 2px solid #e8f4f8;
             border-radius: 16px;
@@ -168,7 +201,7 @@
             transition: all 0.3s ease;
         }
 
-        .feature-card::before {
+        .scope-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -178,63 +211,35 @@
             background-color: #667eea;
         }
 
-        .feature-card:hover {
+        .scope-card:hover {
             border-color: #667eea;
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.1);
             transform: translateY(-3px);
         }
 
-        .feature-card h3 {
+        .scope-card h3 {
             color: #1e3c72;
             font-size: 1.6rem;
             margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .roles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+        .icon {
+            font-size: 1.8rem;
         }
 
-        .role-item {
-            background: #f8fbff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-        }
-
-        .role-item h4 {
-            color: #1e3c72;
+        .scope-card h4 {
+            color: #667eea;
             font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .role-item ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .role-item li {
-            padding: 6px 0 6px 25px;
-            position: relative;
-            font-size: 1rem;
-            color: #555;
-        }
-
-        .role-item li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #22c55e;
-            font-weight: bold;
-            font-size: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .feature-list {
             list-style: none;
             padding: 0;
-            margin-top: 1rem;
         }
 
         .feature-list li {
@@ -244,30 +249,16 @@
             color: #555;
         }
 
-        ul.feature-list > li::before {
-            content: '✓';
+        .feature-list li::before {
+            content: '→';
             position: absolute;
             left: 0;
-            color: #22c55e;
+            color: #667eea;
             font-weight: bold;
             font-size: 1.1rem;
         }
 
-        .feature-list li strong {
-            color: #1e3c72;
-        }
-
-        .subsection {
-            margin-top: 1.5rem;
-        }
-
-        .subsection h4 {
-            color: #667eea;
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .tech-stack-grid {
+        .tech-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
@@ -300,52 +291,171 @@
             font-size: 0.95rem;
         }
 
-        .scalability-box {
-            background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
-            padding: 2rem;
+        .timeline-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
             border-radius: 12px;
-            margin-top: 2rem;
-            border-left: 4px solid #667eea;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
-        .scalability-box h4 {
+        .timeline-table thead {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+        }
+
+        .timeline-table th,
+        .timeline-table td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid #e8f4f8;
+        }
+
+        .timeline-table th {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .timeline-table tr:hover {
+            background: #f8fbff;
+        }
+
+        .timeline-table .phase-name {
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .deliverables-box {
+            background: #f0f9ff;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            margin: 2rem 0;
+        }
+
+        .deliverables-box h4 {
             color: #1e3c72;
             font-size: 1.3rem;
             margin-bottom: 1rem;
         }
 
-        .scalability-box ul {
+        .deliverables-box ul {
             list-style: none;
             padding: 0;
         }
 
-        .scalability-box li {
+        .deliverables-box li {
             padding: 8px 0 8px 30px;
             position: relative;
             color: #64748b;
             font-size: 1.05rem;
         }
 
-        .scalability-box li::before {
-            content: '→';
+        .deliverables-box li::before {
+            content: '📦';
             position: absolute;
-            left: 10px;
-            color: #667eea;
+            left: 0;
             font-size: 1.2rem;
         }
 
-        .highlight-box {
-            background: #e8f5e9;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #22c55e;
-            margin-top: 1rem;
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
-        .highlight-box p {
-            color: #2d5f3f;
+        .pricing-table thead {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid #e8f4f8;
+        }
+
+        .pricing-table th {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .pricing-table tr:hover {
+            background: #f8fbff;
+        }
+
+        .pricing-table .amount {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .total-investment {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            border-radius: 16px;
+        }
+
+        .total-investment h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .total-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .total-note {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .assumptions-box {
+            background: #fff9e6;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #f59e0b;
+            margin: 2rem 0;
+        }
+
+        .assumptions-box h3 {
+            color: #d68910;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .assumptions-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .assumptions-box li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+            color: #92400e;
             font-size: 1.05rem;
-            margin: 0;
+        }
+
+        .assumptions-box li::before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: #f59e0b;
+            font-size: 1.5rem;
+            line-height: 1;
         }
 
         .conclusion-section {
@@ -413,12 +523,20 @@
             .section {
                 padding: 2rem 1rem;
             }
+            
+            .total-amount {
+                font-size: 2rem;
+            }
 
-            .roles-grid {
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .scope-grid {
                 grid-template-columns: 1fr;
             }
 
-            .tech-stack-grid {
+            .tech-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -433,161 +551,139 @@
                     <img src="./images/technizoit_logo_with_text.png" alt="Technizoit Logo" class="logo" />
                 </div>
                 <div class="tagline">Your business problems • Our technology solutions</div>
-                <h1 class="title">PropNinja CRM & Lead Management Platform</h1>
-                <p class="subtitle">Custom Real Estate Channel Partner Management System</p>
+                <h1 class="title">Lead Management System</h1>
+                <div class="meta-info">
+                    <strong>Prepared by:</strong> Technizoit Private Limited<br>
+                    <strong>Client:</strong> PropNinja
+                </div>
+                
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">7 Weeks</span>
+                        <span class="stat-label">Delivery Timeline</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">₹8L</span>
+                        <span class="stat-label">Project Investment</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">2 Apps</span>
+                        <span class="stat-label">Web + Mobile</span>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="content">
-            <!-- Objective -->
+            <!-- Introduction -->
             <div class="section">
-                <h2 class="section-title">Objective</h2>
+                <h2 class="section-title">Introduction</h2>
                 
-                <div class="objective-box">
+                <div class="intro-box">
                     <p>
-                        The objective of this project is to design and develop a custom CRM and Lead Management Platform for PropNinja, a real estate channel partner firm, to streamline operations across lead acquisition, sales management, site visits, and transaction closures.
+                        This proposal outlines the design and development of a <strong>Lead Management System</strong> for a real estate channel partner firm that manages multiple projects and ad campaigns across Google Ads, Meta Ads, and offline sources.
                     </p>
-                    <p>
-                        The system will consist of a <strong>Web Application</strong> (for Admins and Managers) and a <strong>Mobile Application</strong> (for Sales Executives), offering an integrated ecosystem that automates lead tracking, manages teams efficiently, and provides real-time visibility into the sales funnel and performance metrics.
+                    <p style="margin-bottom: 0;">
+                        The system will enable centralized management of projects, campaigns, and leads, automate lead capture from digital sources, and streamline the sales workflow from lead assignment to closure through both a <strong>Web Application</strong> (Admin / Manager) and a <strong>Mobile Application</strong> (Sales Executives).
                     </p>
-                    <p style="margin-bottom: 0;"><strong>The application will empower PropNinja to:</strong></p>
-                    <ul class="objectives-list">
-                        <li>Centralize and automate lead flow from multiple sources (Meta Ads, Google Ads, manual entry)</li>
-                        <li>Improve transparency and accountability among sales teams</li>
-                        <li>Simplify site visit tracking, verification, and closure documentation</li>
-                        <li>Enhance decision-making through reporting and analytics</li>
-                    </ul>
                 </div>
             </div>
 
-            <!-- Core Features -->
+            <!-- Objectives -->
             <div class="section">
-                <h2 class="section-title">Core Features</h2>
+                <h2 class="section-title">Objectives</h2>
 
-                <div class="features-grid">
-                    <!-- Feature 1: User Roles -->
-                    <div class="feature-card">
-                        <h3>1. User Roles and Access</h3>
-                        
-                        <div class="roles-grid">
-                            <div class="role-item">
-                                <h4>Super Admin</h4>
-                                <ul>
-                                    <li>Complete system access and configuration control</li>
-                                    <li>Add/manage properties, users, budgets, and permissions</li>
-                                    <li>Access to full analytics, reports, and transaction data</li>
-                                </ul>
-                            </div>
+                <ul class="objectives-list">
+                    <li>Automate lead capture from Google Ads and Meta Ads</li>
+                    <li>Streamline assignment of leads to sales teams via smart routing rules</li>
+                    <li>Enable efficient follow-ups through integrated call workflows</li>
+                    <li>Track performance of campaigns and teams through analytics dashboards</li>
+                    <li>Improve accountability with time-stamped call logs, visit proofs, and closure workflows</li>
+                </ul>
+            </div>
 
-                            <div class="role-item">
-                                <h4>Manager</h4>
-                                <ul>
-                                    <li>Access limited to their respective team members</li>
-                                    <li>Ability to assign leads, track team performance, and view lead statuses</li>
-                                    <li>View and manage team-specific reports and closure details</li>
-                                </ul>
-                            </div>
+            <!-- Scope of Work -->
+            <div class="section">
+                <h2 class="section-title">Scope of Work</h2>
 
-                            <div class="role-item">
-                                <h4>Sales Executive</h4>
-                                <ul>
-                                    <li>Mobile app access with assigned leads, call module, and visit tracking</li>
-                                    <li>Can update lead status, mark visits, and upload closure documentation</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <div class="scope-grid">
+                    <!-- Web Application -->
+                    <div class="scope-card">
+                        <h3><span class="icon">🖥️</span> Web Application (Admin + Sales Manager)</h3>
 
-                    <!-- Feature 2: Lead Management -->
-                    <div class="feature-card">
-                        <h3>2. Lead Management</h3>
-
-                        <div class="subsection">
-                            <h4>Automatic Lead Capture</h4>
-                            <ul class="feature-list">
-                                <li>Integration with Meta Ads, Google Ads, and manual web form entries</li>
-                                <li>Leads directly pushed into the centralized database</li>
-                            </ul>
-                        </div>
-
-                        <div class="subsection">
-                            <h4>Lead Assignment</h4>
-                            <ul class="feature-list">
-                                <li>Automated or manual assignment of leads to salespersons based on pin code, project, or region</li>
-                                <li>Configurable daily quota (e.g., 200–300 leads/day per salesperson)</li>
-                            </ul>
-                        </div>
-
-                        <div class="subsection">
-                            <h4>Lead Stages and Status Tracking</h4>
-                            <ul class="feature-list">
-                                <li>Categorization into <strong>Hot, Warm, Cold, Unqualified, Lost</strong></li>
-                                <li>Disqualified leads automatically removed from salesperson's bucket and reassigned to admin</li>
-                            </ul>
-                        </div>
-
-                        <div class="subsection">
-                            <h4>Lead Interaction History</h4>
-                            <ul class="feature-list">
-                                <li>Call logs, timestamps, and remarks stored for each lead</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Feature 3: Call Module -->
-                    <div class="feature-card">
-                        <h3>3. Call and Communication Module</h3>
+                        <h4>1. Project & Campaign Management</h4>
                         <ul class="feature-list">
-                            <li><strong>Integrated Dial Pad</strong> within the mobile application</li>
-                            <li>Automatic recording of call duration, timestamps, and lead engagement status</li>
-                            <li>Option to mark outcome: Not Interested, Callback, Visited, etc.</li>
+                            <li>Create and manage projects / properties</li>
+                            <li>Link projects with Google / Meta ad campaigns and website lead forms</li>
+                            <li>Define budget, location, price range, and other metadata</li>
+                            <li>Monitor lead inflow and campaign performance per project</li>
+                        </ul>
+
+                        <h4>2. Lead Capture & Integration</h4>
+                        <ul class="feature-list">
+                            <li>Real-time lead ingestion via Google Ads API, Meta Lead Ads Webhooks, Website forms</li>
+                            <li>CSV / Excel manual lead uploads</li>
+                            <li>Automatic de-duplication and source tagging</li>
+                        </ul>
+
+                        <h4>3. Lead Assignment</h4>
+                        <ul class="feature-list">
+                            <li>Auto-assignment rules by project, location, or lead source</li>
+                            <li>Manual override for re-assignment</li>
+                            <li>Instant notifications to Sales Managers and Executives</li>
+                        </ul>
+
+                        <h4>4. Dashboard & Reports</h4>
+                        <ul class="feature-list">
+                            <li>Overall leads by source, campaign, and project</li>
+                            <li>Conversion rates, CPL, and performance metrics</li>
+                            <li>Sales Manager and Executive performance analytics</li>
+                            <li>Export reports to Excel / PDF</li>
+                        </ul>
+
+                        <h4>5. Admin & Access Control</h4>
+                        <ul class="feature-list">
+                            <li>Role-based permissions (Admin / Manager / Executive)</li>
+                            <li>Manage teams, projects, campaigns, and assignments</li>
                         </ul>
                     </div>
 
-                    <!-- Feature 4: Site Visit Management -->
-                    <div class="feature-card">
-                        <h3>4. Site Visit Management</h3>
-                        <ul class="feature-list">
-                            <li>Salesperson can schedule and mark site visits through the app</li>
-                            <li><strong>Geo-location tracking:</strong> Visit marking allowed only within 10m radius of mapped project</li>
-                            <li><strong>OTP/Feedback Code Verification:</strong>
-                                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
-                                    <li style="padding-left: 0;">After visit, client receives OTP/feedback code via WhatsApp or SMS</li>
-                                    <li style="padding-left: 0;">Visit marked as "Verified" only after salesperson enters the correct OTP</li>
-                                </ul>
-                            </li>
-                            <li>Visit tracking linked with HR attendance module (for future scalability)</li>
-                        </ul>
-                    </div>
+                    <!-- Mobile Application -->
+                    <div class="scope-card">
+                        <h3><span class="icon">📱</span> Mobile Application (Sales Executives)</h3>
 
-                    <!-- Feature 5: Transaction Closure -->
-                    <div class="feature-card">
-                        <h3>5. Transaction Closure Module (TCF)</h3>
+                        <h4>1. Lead Dashboard</h4>
                         <ul class="feature-list">
-                            <li>Transaction Closure Form accessible post-sale</li>
-                            <li><strong>Salesperson uploads:</strong>
-                                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
-                                    <li style="padding-left: 0;">Project and unit details</li>
-                                    <li style="padding-left: 0;">Base price and brokerage percentage</li>
-                                    <li style="padding-left: 0;">Client KYC documents, booking form, cost sheet, builder confirmation</li>
-                                </ul>
-                            </li>
-                            <li>Admin/Manager verification workflow for each closure</li>
+                            <li>View assigned leads with filters (project, status, date)</li>
+                            <li>Display assigned date, expected close date, and source</li>
                         </ul>
-                    </div>
 
-                    <!-- Feature 6: Reporting -->
-                    <div class="feature-card">
-                        <h3>6. Reporting and Analytics</h3>
+                        <h4>2. Communication & Logging</h4>
                         <ul class="feature-list">
-                            <li><strong>Comprehensive dashboards</strong> for Admins and Managers:
-                                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
-                                    <li style="padding-left: 0;">Team-wise lead conversion ratios</li>
-                                    <li style="padding-left: 0;">Site visit to closure performance</li>
-                                    <li style="padding-left: 0;">Daily/weekly call reports</li>
-                                </ul>
-                            </li>
-                            <li>Exportable reports (CSV/PDF) for reviews and performance audits</li>
+                            <li>Click-to-call from within the app</li>
+                            <li>Logs start / end time and duration</li>
+                            <li>No call recording stored or managed within the system</li>
+                            <li>Add notes, status updates, and attachments per lead</li>
+                        </ul>
+
+                        <h4>3. Site Visit Management</h4>
+                        <ul class="feature-list">
+                            <li>Schedule and record site visits with client details</li>
+                            <li>Upload geo-tagged photos from the visit</li>
+                            <li>Sync visit data to admin dashboard</li>
+                        </ul>
+
+                        <h4>4. Lead Closure Workflow</h4>
+                        <ul class="feature-list">
+                            <li>Mark leads as In Progress, Junk, or Closed</li>
+                            <li>Upload Completion Form / Agreement Copy</li>
+                            <li>Forward client info to project owner</li>
+                        </ul>
+
+                        <h4>5. Notifications & Reminders</h4>
+                        <ul class="feature-list">
+                            <li>Push notifications for new leads, follow-ups, and visits</li>
+                            <li>Daily summary alerts</li>
                         </ul>
                     </div>
                 </div>
@@ -595,72 +691,207 @@
 
             <!-- Technology Stack -->
             <div class="section">
-                <h2 class="section-title">Technology Stack (Proposed)</h2>
+                <h2 class="section-title">Technical Stack</h2>
 
-                <div class="tech-stack-grid">
+                <div class="tech-grid">
                     <div class="tech-item">
                         <h4>Frontend (Web)</h4>
                         <p>React.js / Next.js</p>
                     </div>
                     <div class="tech-item">
-                        <h4>Frontend (Mobile)</h4>
-                        <p>React Native</p>
-                    </div>
-                    <div class="tech-item">
                         <h4>Backend</h4>
-                        <p>Node.js / Express</p>
+                        <p>Node.js (NestJS) with REST API</p>
                     </div>
                     <div class="tech-item">
                         <h4>Database</h4>
                         <p>PostgreSQL</p>
                     </div>
                     <div class="tech-item">
-                        <h4>Cloud Hosting</h4>
-                        <p>AWS / Heroku</p>
+                        <h4>Integrations</h4>
+                        <p>Google Ads API v16, Meta Graph API</p>
                     </div>
                     <div class="tech-item">
                         <h4>Authentication</h4>
-                        <p>JWT-based Secure Login</p>
+                        <p>JWT / OAuth 2.0</p>
                     </div>
                     <div class="tech-item">
-                        <h4>Integration APIs</h4>
-                        <p>Meta, Google Ads, WhatsApp (for feedback code)</p>
+                        <h4>Mobile App</h4>
+                        <p>React Native (Expo)</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Hosting</h4>
+                        <p>AWS / Render / Vercel / Firebase</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Notifications</h4>
+                        <p>Firebase Cloud Messaging</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>Storage</h4>
+                        <p>AWS S3 / Cloudflare R2</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Scalability -->
+            <!-- Timeline -->
             <div class="section">
-                <h2 class="section-title">Scalability & Future Enhancements</h2>
+                <h2 class="section-title">Project Plan & Timeline (7 Weeks)</h2>
 
-                <div class="scalability-box">
-                    <h4>Modular architecture for future addition of:</h4>
+                <table class="timeline-table">
+                    <thead>
+                        <tr>
+                            <th>Phase</th>
+                            <th>Deliverables</th>
+                            <th>Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="phase-name">Week 1</td>
+                            <td>Requirements finalization, architecture design, API & DB schema</td>
+                            <td>1 week</td>
+                        </tr>
+                        <tr>
+                            <td class="phase-name">Week 2 – 3</td>
+                            <td>Web App core modules — Projects, Campaigns, Lead Capture, Integration APIs</td>
+                            <td>2 weeks</td>
+                        </tr>
+                        <tr>
+                            <td class="phase-name">Week 4</td>
+                            <td>Lead Assignment, Dashboards, Reports</td>
+                            <td>1 week</td>
+                        </tr>
+                        <tr>
+                            <td class="phase-name">Week 5 – 6</td>
+                            <td>Mobile App (Lead listing, calls, site visits, closures)</td>
+                            <td>2 weeks</td>
+                        </tr>
+                        <tr>
+                            <td class="phase-name">Week 7</td>
+                            <td>Testing, bug fixes, deployment, documentation, handover</td>
+                            <td>1 week</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Deliverables -->
+            <div class="section">
+                <h2 class="section-title">Deliverables</h2>
+
+                <div class="deliverables-box">
+                    <h4>Complete Package Includes:</h4>
                     <ul>
-                        <li>HR & Payroll Module (Attendance integration)</li>
-                        <li>Performance Tracking Dashboard</li>
-                        <li>Push Notifications and Auto Reminders</li>
+                        <li>Web Application (Admin / Manager Dashboard)</li>
+                        <li>Mobile Application (Android and iOS)</li>
+                        <li>API Documentation & Admin Manual</li>
+                        <li>Deployment setup on client's preferred cloud environment</li>
+                        <li>30-day post-deployment technical support</li>
                     </ul>
                 </div>
+            </div>
 
-                <!-- <div class="highlight-box">
-                    <p><strong>SaaS Potential:</strong> Scope to convert to SaaS model for external channel partner onboarding in future</p>
-                </div> -->
+            <!-- Commercials -->
+            <div class="section">
+                <h2 class="section-title">Commercials</h2>
+
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Description</th>
+                            <th style="text-align: right;">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight: 600; color: #1e3c72;">Web + Mobile Development</td>
+                            <td>Design, development, integrations, testing, deployment</td>
+                            <td class="amount" style="text-align: right;">₹8,00,000</td>
+                        </tr>
+                        <tr style="background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);">
+                            <td style="font-weight: 700; color: #1e3c72;">Total (excl. GST)</td>
+                            <td></td>
+                            <td style="font-weight: 700; color: #1e3c72; text-align: right; font-size: 1.2rem;">₹8,00,000 + 18% GST</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Payment Terms -->
+            <div class="section">
+                <h2 class="section-title">Payment Terms (4 Milestones)</h2>
+
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Milestone</th>
+                            <th>Description</th>
+                            <th style="text-align: center;">%</th>
+                            <th style="text-align: right;">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight: 600; color: #1e3c72;">Milestone 1</td>
+                            <td>Project initiation & requirements confirmation</td>
+                            <td style="text-align: center;">25%</td>
+                            <td class="amount" style="text-align: right;">₹2,00,000</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; color: #1e3c72;">Milestone 2</td>
+                            <td>Completion of Web Application core modules (Projects, Campaigns, Leads, Integrations)</td>
+                            <td style="text-align: center;">25%</td>
+                            <td class="amount" style="text-align: right;">₹2,00,000</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; color: #1e3c72;">Milestone 3</td>
+                            <td>Completion of Mobile Application (Lead management, calls, visits, closures)</td>
+                            <td style="text-align: center;">25%</td>
+                            <td class="amount" style="text-align: right;">₹2,00,000</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; color: #1e3c72;">Milestone 4</td>
+                            <td>Final testing, deployment, and handover</td>
+                            <td style="text-align: center;">25%</td>
+                            <td class="amount" style="text-align: right;">₹2,00,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="total-investment">
+                    <h3>Total Project Investment</h3>
+                    <div class="total-amount">₹8,00,000</div>
+                    <div class="total-note">+ GST (as applicable)</div>
+                </div>
+            </div>
+
+            <!-- Assumptions & Exclusions -->
+            <div class="section">
+                <h2 class="section-title">Assumptions & Exclusions</h2>
+
+                <div class="assumptions-box">
+                    <h3>Important Notes</h3>
+                    <ul>
+                        <li>Client will provide ad-account access (Google Ads / Meta Ads) for API integration</li>
+                        <li>Third-party subscription costs (Firebase Blaze plan, Twilio, etc.) are excluded</li>
+                        <li>System will not include call recording or WhatsApp chat functionality</li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Next Steps -->
             <div class="section conclusion-section">
-                <h2 class="section-title">Ready to Transform Your Real Estate Operations?</h2>
+                <h2 class="section-title">Ready to Transform Your Lead Management?</h2>
                 
                 <div class="contact-info">
-                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Let's Build Your Custom CRM</h3>
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Let's Get Started</h3>
                     <p style="margin-bottom: 2rem; opacity: 0.9; font-size: 1.1rem;">
-                        Partner with us to create a comprehensive lead management and sales tracking platform tailored to PropNinja's unique requirements.
+                        Partner with us to create a comprehensive lead management system that streamlines your real estate operations and maximizes conversions.
                     </p>
                     
                     <div class="contact-links">
-                        <a href="mailto:hello@technizoit.com" class="contact-link">
-                            Schedule Discovery Call
-                        </a>
+
                         <a href="https://www.technizoit.com/" class="contact-link" target="_blank">
                             Visit Website
                         </a>
@@ -668,7 +899,8 @@
 
                     <p style="margin-top: 2rem; opacity: 0.9;">
                         <strong>Technizoit Private Limited</strong><br>
-                        Mumbai, India
+                        Mumbai, India<br>
+                        📧 sagar@technizoit.com | 🌐 www.technizoit.com
                     </p>
                 </div>
             </div>
